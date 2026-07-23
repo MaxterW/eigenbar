@@ -107,15 +107,8 @@ body {
 
 }
 
-.star {
 
-    font-size: 24px;
-
-    letter-spacing: 2px;
-
-}
-
-.star.filled {
+.full-star {
 
     color: white;
 
@@ -136,7 +129,7 @@ body {
 
 }
 
-.star.empty {
+.empty-star {
 
     color: #444;
 
