@@ -79,8 +79,6 @@ async function loadCocktail(){
     .innerHTML = `
 
 
-    //<img src="${cocktail.image_url}">
-
 
     <h1>
     ${cocktail.name}

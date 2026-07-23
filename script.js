@@ -110,8 +110,6 @@ async function loadCocktails(){
         href="cocktail.html?id=${cocktail.id}">
 
 
-            //<img src="${cocktail.image_url}">
-
 
             <h2>
             ${cocktail.name}
