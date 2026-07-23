@@ -39,38 +39,50 @@ function renderStars(value){
 
 
 
-async function getAverageRating(id){
-
+async function getAllRatings(){
 
     const {data,error} =
     await supabaseClient
     .from("ratings")
-    .select("rating")
-    .eq("cocktail_id",id);
+    .select("cocktail_id,rating");
+
+
+    if(error){
+        console.log(error);
+        return {};
+    }
+
+
+    let averages = {};
+
+
+    data.forEach(r => {
+
+        if(!averages[r.cocktail_id]){
+            averages[r.cocktail_id] = [];
+        }
+
+        averages[r.cocktail_id].push(
+            Number(r.rating)
+        );
+
+    });
 
 
 
-    if(error || data.length === 0){
+    for(const id in averages){
 
-        return "Keine Bewertungen";
+        const values = averages[id];
+
+        averages[id] =
+        values.reduce((a,b)=>a+b,0)
+        /
+        values.length;
 
     }
 
 
-
-    const average =
-    data.reduce(
-        (sum,r)=>sum + Number(r.rating),
-        0
-    ) / data.length;
-
-
-
-    return `
-    ${renderStars(average)}
-    <br>
-    ${average.toFixed(1)} / 5
-    `;
+    return averages;
 
 }
 
@@ -88,6 +100,10 @@ async function loadCocktails(){
     await response.json();
 
 
+    const ratings =
+    await getAllRatings();
+
+
 
     const container =
     document.getElementById("cocktails");
@@ -97,46 +113,52 @@ async function loadCocktails(){
     for(const cocktail of cocktails){
 
 
+        let ratingText =
+        "Keine Bewertungen";
 
-        const rating =
-        await getAverageRating(cocktail.id);
+
+        if(ratings[cocktail.id]){
+
+            ratingText =
+            `
+            ${renderStars(ratings[cocktail.id])}
+            <br>
+            ${ratings[cocktail.id].toFixed(1)} / 5
+            `;
+
+        }
 
 
 
         container.innerHTML += `
 
-
         <a class="card"
         href="cocktail.html?id=${cocktail.id}">
 
 
-
-            <h2>
-            ${cocktail.name}
-            </h2>
-
-
-            <p>
-            ${cocktail.ingredients
-            .map(i=>i.name)
-            .join(", ")}
-            </p>
+        <h2>
+        ${cocktail.name}
+        </h2>
 
 
-            <p>
-            ${cocktail.category}
-            |
-            ${cocktail.alcohol_pc} %
-            </p>
+        <p>
+        ${cocktail.ingredients
+        .map(i=>i.name)
+        .join(", ")}
+        </p>
 
 
-            <div>
-            ${rating}
-            </div>
+        <p>
+        ${cocktail.category}
+        |
+        ${cocktail.alcohol_pc} %
+        </p>
+
+
+        ${ratingText}
 
 
         </a>
-
 
         `;
 
