@@ -1,5 +1,5 @@
 const SUPABASE_URL =
-"https://DEINE_URL.supabase.co";
+"https://jnizemsqcwescmagohuw.supabase.co";
 
 
 const SUPABASE_KEY =
