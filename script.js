@@ -97,11 +97,11 @@ comment:comment
 
 
 if(error){
-    alert(error.message);
-    console.log(error);
+    console.error("Supabase Fehler:", error);
+    alert("Fehler: " + error.message);
 }
 else{
-alert("Danke für deine Bewertung!");
+    alert("Danke für deine Bewertung!");
 }
 
 }
