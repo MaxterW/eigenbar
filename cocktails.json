@@ -2,6 +2,7 @@
     {
         "id": 1,
         "name": "Old Fashioned",
+        "description": "The first use of the name 'Old Fashioned' for a Bourbon Whiskey cocktail was said to have been at the Pendennis Club, a gentlemen's club founded in 1881 in Louisville, Kentucky. The recipe was said to have been invented by a bartender at that club in honor of Colonel James E. Pepper, a prominent bourbon distiller, who brought it to the Waldorf-Astoria Hotel bar in New York City.",
         "ingredients": [
             {"name": "Bourbon Whiskey"},
             {"name": "Angostura Bitters"},
