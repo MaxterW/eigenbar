@@ -107,6 +107,21 @@ body {
 
 }
 
+.half-star {
+
+    background: linear-gradient(
+        90deg,
+        white 50%,
+        #555 50%
+    );
+
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    color: transparent;
+
+}
+
 
 
 /* =========================

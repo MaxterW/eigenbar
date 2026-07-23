@@ -13,9 +13,6 @@ supabase.createClient(
 let allCocktails = [];
 let averageRatings = {};
 
-const fullStar = "\u2605";
-const halfStar = "\u2BEA";
-const emptyStar = "\u2606";
 
 function renderStars(value){
 
@@ -25,19 +22,19 @@ function renderStars(value){
 
         if(value >= i){
 
-            stars += fullStar;
+            stars += `<span class="full-star">★</span>`;
 
         }
 
         else if(value >= i - 0.5){
 
-            stars += halfStar;
+            stars += `<span class="half-star">★</span>`;
 
         }
 
         else{
 
-            stars += emptyStar;
+            stars += `<span class="empty-star">☆</span>`;
 
         }
 
