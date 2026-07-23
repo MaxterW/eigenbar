@@ -186,7 +186,7 @@
             {"name": "Trockener Wermut"}
         ],
         "alcohol_pc": 32,
-        "category": "Classic",
+        "category": "Classic-Riffs",
         "flavor_profile": [
           "trocken",
           "herb"
@@ -203,7 +203,7 @@
             { "name": "Limettensaft" }
         ],
         "alcohol_pc": 9,
-        "category": "Classic",
+        "category": "Classic-Riffs",
         "flavor_profile": [
             "frisch",
             "würzig",
@@ -221,7 +221,7 @@
             { "name": "Limettensaft" }
         ],
         "alcohol_pc": 9,
-        "category": "Classic",
+        "category": "Classic-Riffs",
         "flavor_profile": [
             "frisch",
             "würzig",
@@ -239,7 +239,7 @@
             { "name": "Süßer Wermut" }
         ],
         "alcohol_pc": 22,
-        "category": "Classic",
+        "category": "Classic-Riffs",
         "flavor_profile": [
             "bitter",
             "kräftig",
@@ -257,7 +257,7 @@
             { "name": "Sodawasser" }
         ],
         "alcohol_pc": 13,
-        "category": "Classic",
+        "category": "Classic-Riffs",
         "flavor_profile": [
             "bitter",
             "herb",
@@ -275,7 +275,7 @@
             { "name": "Prosecco" }
         ],
         "alcohol_pc": 12,
-        "category": "Classic",
+        "category": "Classic-Riffs",
         "flavor_profile": [
             "bitter",
             "herb",
@@ -294,7 +294,7 @@
             { "name": "Zuckersirup" }
         ],
         "alcohol_pc": 9,
-        "category": "Classic",
+        "category": "Classic-Riffs",
         "flavor_profile": [
             "fruchtig",
             "frisch",
@@ -313,7 +313,7 @@
             { "name": "Maraschino-Likör" }
         ],
         "alcohol_pc": 15,
-        "category": "Classic",
+        "category": "Classic-Riffs",
         "flavor_profile": [
             "fruchtig",
             "sauer",
@@ -332,7 +332,7 @@
             { "name": "Eiweiß" }
         ],
         "alcohol_pc": 14,
-        "category": "Classic",
+        "category": "Sours",
         "flavor_profile": [
             "sauer",
             "kräftig",
@@ -351,7 +351,7 @@
             { "name": "Eiweiß" }
         ],
         "alcohol_pc": 15,
-        "category": "Classic",
+        "category": "Sours",
         "flavor_profile": [
             "sauer",
             "frisch",
@@ -370,7 +370,7 @@
             { "name": "Eiweiß" }
         ],
         "alcohol_pc": 17,
-        "category": "Classic",
+        "category": "Sours",
         "flavor_profile": [
             "sauer",
             "leicht",
@@ -388,7 +388,7 @@
             { "name": "Eiweiß" }
         ],
         "alcohol_pc": 13,
-        "category": "Classic",
+        "category": "Sours",
         "flavor_profile": [
             "süß",
             "nussig",
@@ -407,7 +407,7 @@
             { "name": "Eiweiß" }
         ],
         "alcohol_pc": 4,
-        "category": "Classic",
+        "category": "Sours",
         "flavor_profile": [
             "bitter",
             "fruchtig",
@@ -427,7 +427,7 @@
             { "name": "Eiweiß" }
         ],
         "alcohol_pc": 10,
-        "category": "Classic",
+        "category": "Sours",
         "flavor_profile": [
             "würzig",
             "herb",
@@ -447,7 +447,7 @@
             { "name": "Rotwein" }
         ],
         "alcohol_pc": 12,
-        "category": "Classic",
+        "category": "Sours",
         "flavor_profile": [
             "kräftig",
             "sauer"
@@ -467,7 +467,7 @@
             { "name": "Portwein" }
         ],
         "alcohol_pc": 12,
-        "category": "Classic",
+        "category": "Sours",
         "flavor_profile": [
             "kräftig",
             "sauer"

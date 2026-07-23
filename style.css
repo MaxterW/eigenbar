@@ -1,10 +1,32 @@
+/* =========================
+   Grundlayout
+========================= */
+
+* {
+
+    box-sizing: border-box;
+
+}
+
+
+html,
+body {
+
+    width: 100%;
+
+    overflow-x: hidden;
+
+}
+
+
+
 body {
 
     font-family: Arial, sans-serif;
 
-    max-width: 900px;
-
     width: 100%;
+
+    max-width: 900px;
 
     margin: auto;
 
@@ -13,6 +35,8 @@ body {
     background: #111;
 
     color: white;
+
+    font-size: 18px;
 
 }
 
@@ -29,7 +53,7 @@ body {
 
     background: #222;
 
-    padding: 22px;
+    padding: 20px;
 
     margin: 20px 0;
 
@@ -46,8 +70,6 @@ body {
 .card h2 {
 
     font-size: 1.5rem;
-
-    margin-top: 0;
 
 }
 
@@ -96,9 +118,9 @@ body {
 
     background: #222;
 
-    padding: 18px;
+    padding: 15px;
 
-    margin: 15px 0;
+    margin: 10px 0;
 
     border-radius: 10px;
 
@@ -107,7 +129,7 @@ body {
 
 
 /* =========================
-   Eingaben
+   Formulare
 ========================= */
 
 
@@ -118,9 +140,9 @@ button {
 
     width: 100%;
 
-    padding: 14px;
+    padding: 12px;
 
-    margin: 8px 0;
+    margin: 6px 0;
 
     font-size: 18px;
 
@@ -139,13 +161,13 @@ button {
 
 
 /* =========================
-   Geschmacksprofil Filter
+   Geschmacksprofile
 ========================= */
 
 
 .hidden {
 
-    display:none;
+    display: none;
 
 }
 
@@ -153,7 +175,7 @@ button {
 
 .flavor-box {
 
-    margin: 25px 0;
+    margin: 20px 0;
 
 }
 
@@ -161,21 +183,21 @@ button {
 
 #flavorToggle {
 
-    width:100%;
+    width: 100%;
 
-    padding:14px;
+    padding: 14px;
 
-    cursor:pointer;
+    cursor: pointer;
 
-    background:#222;
+    background: #222;
 
-    color:white;
+    color: white;
 
-    border:1px solid #555;
+    border: 1px solid #555;
 
-    border-radius:10px;
+    border-radius: 10px;
 
-    font-size:18px;
+    font-size: 18px;
 
 }
 
@@ -183,15 +205,15 @@ button {
 
 #flavorFilterContainer {
 
-    border:1px solid #555;
+    border: 1px solid #555;
 
-    padding:15px;
+    padding: 15px;
 
-    margin-top:8px;
+    margin-top: 8px;
 
-    border-radius:10px;
+    border-radius: 10px;
 
-    background:#1a1a1a;
+    background: #1a1a1a;
 
 }
 
@@ -201,12 +223,14 @@ button {
 
 #flavorFilter {
 
-    display:grid;
+    display: grid;
 
     grid-template-columns:
-    repeat(auto-fit, minmax(140px,1fr));
+    repeat(auto-fit, minmax(130px, 1fr));
 
-    gap:12px;
+    gap: 10px;
+
+    width: 100%;
 
 }
 
@@ -214,15 +238,15 @@ button {
 
 .flavor-option {
 
-    display:flex;
+    display: flex;
 
-    align-items:center;
+    align-items: center;
 
-    gap:8px;
+    gap: 8px;
 
-    min-width:0;
+    min-width: 0;
 
-    font-size:17px;
+    font-size: 17px;
 
 }
 
@@ -230,13 +254,13 @@ button {
 
 .flavor-option input {
 
-    width:20px;
+    width: 20px;
 
-    height:20px;
+    height: 20px;
 
-    margin:0;
+    margin: 0;
 
-    flex-shrink:0;
+    flex-shrink: 0;
 
 }
 
@@ -244,7 +268,11 @@ button {
 
 .flavor-option span {
 
-    white-space:nowrap;
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
 
 }
 
@@ -255,54 +283,61 @@ button {
 #selectAllFlavors,
 #deselectAllFlavors {
 
-    width:auto;
+    width: auto;
 
-    padding:12px 16px;
+    padding: 12px 16px;
 
-    margin-top:15px;
+    margin-top: 15px;
 
-    margin-right:8px;
+    margin-right: 8px;
 
 }
 
 
 
 /* =========================
-   Mobile Optimierung
+   Handy Optimierung
 ========================= */
 
 
-@media(max-width:600px){
+@media(max-width:600px) {
 
 
     body {
 
-        padding:15px;
+        padding: 15px;
 
-        font-size:18px;
+        font-size: 18px;
+
+    }
+
+
+    h1 {
+
+        font-size: 2rem;
 
     }
 
 
     .card {
 
-        padding:18px;
+        padding: 18px;
 
-        margin:15px 0;
+        margin: 15px 0;
 
     }
 
 
     .card h2 {
 
-        font-size:1.6rem;
+        font-size: 1.6rem;
 
     }
 
 
     .card p {
 
-        font-size:1.1rem;
+        font-size: 1.1rem;
 
     }
 
@@ -310,9 +345,9 @@ button {
     #flavorFilter {
 
         grid-template-columns:
-        repeat(2,1fr);
+        repeat(2, 1fr);
 
-        gap:12px;
+        gap: 12px;
 
     }
 
@@ -322,16 +357,16 @@ button {
 
 
 /* =========================
-   Größere Bildschirme
+   Desktop
 ========================= */
 
 
-@media(min-width:900px){
+@media(min-width:900px) {
 
 
     body {
 
-        font-size:16px;
+        font-size: 16px;
 
     }
 
