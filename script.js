@@ -66,3 +66,42 @@ Absenden
 });
 
 });
+
+async function submitRating(event, cocktailId){
+
+event.preventDefault();
+
+
+let name =
+document.getElementById(`name-${cocktailId}`).value;
+
+
+let rating =
+document.getElementById(`rating-${cocktailId}`).value;
+
+
+let comment =
+document.getElementById(`comment-${cocktailId}`).value;
+
+
+const {error} = await supabaseClient
+.from("ratings")
+.insert([
+{
+cocktail_id: cocktailId,
+name:name,
+rating:rating,
+comment:comment
+}
+]);
+
+
+if(error){
+alert("Fehler beim Speichern");
+console.log(error);
+}
+else{
+alert("Danke für deine Bewertung!");
+}
+
+}
