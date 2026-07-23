@@ -20,8 +20,9 @@ new URLSearchParams(location.search)
 .get("id")
 );
 
-
-
+const fullStar = "\u2605";
+const halfStar = "\u2BEA";
+const emptyStar = "\u2606";
 
 
 function renderStars(value){
@@ -33,19 +34,19 @@ function renderStars(value){
 
         if(value >= i){
 
-            stars+="★";
+            stars+=fullStar;
 
         }
 
         else if(value >= i-0.5){
 
-            stars+="⯨";
+            stars+=halfStar;
 
         }
 
         else{
 
-            stars+="☆";
+            stars+=emptyStar;
 
         }
 
