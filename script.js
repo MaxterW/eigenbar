@@ -1,3 +1,11 @@
+const SUPABASE_URL = "https://jnizemsqcwescmagohuw.supabase.co/rest/v1/";
+const SUPABASE_KEY = "sb_publishable_yBd-5ZjZPVUJRyLqhyq4IA_nIfYZAAK";
+
+const supabaseClient = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
 fetch("cocktails.json")
 .then(response => response.json())
 .then(data => {
@@ -18,9 +26,38 @@ container.innerHTML += `
 ${drink.zutaten.map(x=>`<li>${x}</li>`).join("")}
 </ul>
 
+<form onsubmit="submitRating(event, ${drink.id})">
+
+<input 
+id="name-${drink.id}"
+placeholder="Dein Name">
+
+<br>
+
+<select id="rating-${drink.id}">
+<option value="5">★★★★★</option>
+<option value="4">★★★★</option>
+<option value="3">★★★</option>
+<option value="2">★★</option>
+<option value="1">★</option>
+</select>
+
+<br>
+
+<textarea 
+id="comment-${drink.id}"
+placeholder="Kommentar">
+</textarea>
+
+<br>
+
 <button>
-Bewerten
+Absenden
 </button>
+
+</form>
+
+<div id="ratings-${drink.id}"></div>
 
 </div>
 
