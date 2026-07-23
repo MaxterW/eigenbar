@@ -1,0 +1,22 @@
+[
+ {
+  "id":1,
+  "name":"Negroni",
+  "zutaten":[
+    "3 cl Gin",
+    "3 cl Campari",
+    "3 cl Vermouth"
+  ]
+ },
+
+ {
+  "id":2,
+  "name":"Mojito",
+  "zutaten":[
+    "5 cl Rum",
+    "Limette",
+    "Minze",
+    "Soda"
+  ]
+ }
+]
