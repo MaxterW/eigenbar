@@ -12,11 +12,18 @@ body {
 
     color: white;
 
+    font-size: 18px;
+
+    line-height: 1.5;
+
 }
 
 
 
-/* Cocktail Karten */
+/* =========================
+   Cocktail Karten
+========================= */
+
 
 .card {
 
@@ -24,7 +31,7 @@ body {
 
     background: #222;
 
-    padding: 20px;
+    padding: 22px;
 
     margin: 20px 0;
 
@@ -33,6 +40,24 @@ body {
     color: white;
 
     text-decoration: none;
+
+}
+
+
+
+.card h2 {
+
+    font-size: 1.5rem;
+
+    margin-top: 0;
+
+}
+
+
+
+.card p {
+
+    font-size: 1.05rem;
 
 }
 
@@ -64,15 +89,18 @@ body {
 
 
 
-/* Bewertungen */
+/* =========================
+   Bewertungen
+========================= */
+
 
 .rating {
 
     background: #222;
 
-    padding: 15px;
+    padding: 18px;
 
-    margin: 10px 0;
+    margin: 15px 0;
 
     border-radius: 10px;
 
@@ -80,7 +108,10 @@ body {
 
 
 
-/* Formulare */
+/* =========================
+   Eingaben
+========================= */
+
 
 input,
 textarea,
@@ -89,11 +120,13 @@ button {
 
     width: 100%;
 
-    padding: 10px;
+    padding: 14px;
 
-    margin: 5px 0;
+    margin: 8px 0;
 
-    font-size: 16px;
+    font-size: 18px;
+
+    border-radius: 8px;
 
 }
 
@@ -114,7 +147,7 @@ button {
 
 .hidden {
 
-    display: none;
+    display:none;
 
 }
 
@@ -122,7 +155,7 @@ button {
 
 .flavor-box {
 
-    margin: 20px 0;
+    margin: 25px 0;
 
 }
 
@@ -130,19 +163,21 @@ button {
 
 #flavorToggle {
 
-    width: 100%;
+    width:100%;
 
-    padding: 10px;
+    padding:14px;
 
-    cursor: pointer;
+    cursor:pointer;
 
-    background: #222;
+    background:#222;
 
-    color: white;
+    color:white;
 
-    border: 1px solid #555;
+    border:1px solid #555;
 
-    border-radius: 10px;
+    border-radius:10px;
+
+    font-size:18px;
 
 }
 
@@ -150,15 +185,15 @@ button {
 
 #flavorFilterContainer {
 
-    border: 1px solid #555;
+    border:1px solid #555;
 
-    padding: 15px;
+    padding:15px;
 
-    margin-top: 5px;
+    margin-top:8px;
 
-    border-radius: 10px;
+    border-radius:10px;
 
-    background: #1a1a1a;
+    background:#1a1a1a;
 
 }
 
@@ -168,30 +203,28 @@ button {
 
 #flavorFilter {
 
-    display: grid;
+    display:grid;
 
     grid-template-columns:
-    repeat(auto-fit, minmax(130px, 1fr));
+    repeat(auto-fit, minmax(140px,1fr));
 
-    gap: 8px 12px;
-
-    width: 100%;
+    gap:12px;
 
 }
 
 
 
-/* einzelner Filter */
-
 .flavor-option {
 
-    display: flex;
+    display:flex;
 
-    align-items: center;
+    align-items:center;
 
-    gap: 6px;
+    gap:8px;
 
-    min-width: 0;
+    min-width:0;
+
+    font-size:17px;
 
 }
 
@@ -199,11 +232,13 @@ button {
 
 .flavor-option input {
 
-    width: auto;
+    width:20px;
 
-    margin: 0;
+    height:20px;
 
-    flex-shrink: 0;
+    margin:0;
+
+    flex-shrink:0;
 
 }
 
@@ -211,25 +246,96 @@ button {
 
 .flavor-option span {
 
-    white-space: nowrap;
-
-    overflow: hidden;
-
-    text-overflow: ellipsis;
+    white-space:nowrap;
 
 }
 
 
 
-/* Buttons innerhalb der Filterbox */
+/* Filter Buttons */
 
 #selectAllFlavors,
 #deselectAllFlavors {
 
-    width: auto;
+    width:auto;
 
-    margin-top: 15px;
+    padding:12px 16px;
 
-    margin-right: 10px;
+    margin-top:15px;
+
+    margin-right:8px;
+
+}
+
+
+
+/* =========================
+   Mobile Optimierung
+========================= */
+
+
+@media(max-width:600px){
+
+
+    body {
+
+        padding:15px;
+
+        font-size:18px;
+
+    }
+
+
+    .card {
+
+        padding:18px;
+
+        margin:15px 0;
+
+    }
+
+
+    .card h2 {
+
+        font-size:1.6rem;
+
+    }
+
+
+    .card p {
+
+        font-size:1.1rem;
+
+    }
+
+
+    #flavorFilter {
+
+        grid-template-columns:
+        repeat(2,1fr);
+
+        gap:12px;
+
+    }
+
+
+}
+
+
+
+/* =========================
+   Größere Bildschirme
+========================= */
+
+
+@media(min-width:900px){
+
+
+    body {
+
+        font-size:16px;
+
+    }
+
 
 }
