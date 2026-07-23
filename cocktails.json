@@ -1,22 +1,71 @@
 [
- {
-  "id":1,
-  "name":"Negroni",
-  "zutaten":[
-    "3 cl Gin",
-    "3 cl Campari",
-    "3 cl Vermouth"
-  ]
- },
-
- {
-  "id":2,
-  "name":"Mojito",
-  "zutaten":[
-    "5 cl Rum",
-    "Limette",
-    "Minze",
-    "Soda"
-  ]
- }
+    {
+        "id": 1,
+        "name": "Old Fashioned",
+        "ingredients": [
+            {"name": "Bourbon Whiskey"},
+            {"name": "Angostura Bitters"},
+            {"name": "Würfelzucker"}
+        ],
+        "alcohol_pc": 29,
+        "category": "Classic",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Whiskey_Old_Fashioned1.jpg/972px-Whiskey_Old_Fashioned1.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Negroni",
+        "ingredients": [
+            {"name": "Campari"},
+            {"name": "Süßer Wermut"},
+            {"name": "Gin"}
+        ],
+        "alcohol_pc": 22,
+        "category": "Classic",
+        "image_url": "https://www.maltwhisky.de/wp-content/uploads/2021/02/negroni-cocktail-1160px.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Gin & Tonic",
+        "ingredients": [
+            {"name": "Gin"},
+            {"name": "Tonic Water"}
+        ],
+        "alcohol_pc": 16,
+        "category": "Classic",
+        "image_url": "https://www.gutekueche.at/storage/media/recipe/7027/gin-tonic-mit-gurke.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Manhatten",
+        "ingredients": [
+            {"name": "Rye Whiskey"},
+            {"name": "Süßer Wermut"},
+            {"name": "Angustura Bitters"}
+        ],
+        "alcohol_pc": 24,
+        "category": "Classic",
+        "image_url": "https://www.liquor.com/thmb/DR2UAsRlu-YCVn9r_iLJCmOvzlg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/manhattan-4000x4000-primary-ig-9c3d894510284e9d8fbd9c518d00790b.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Martini",
+        "ingredients": [
+            {"name": "Gin"},
+            {"name": "Trockener Wermut"}
+        ],
+        "alcohol_pc": 23,
+        "category": "Classic",
+        "image_url": "https://images.ctfassets.net/6zncp07wiqyq/3jWOuYUb8G91siO6rw3DmD/50721f8520f43f9890101d21babac098/media_2rvfvadm_the_ultimate_ketel_one_dirty_martini_dba_recipe_570x334.jpg"
+    },
+    {
+        "id": 6,
+        "name": "Vodka Martini",
+        "ingredients": [
+            {"name": "Vodka"},
+            {"name": "Trockener Wermut"}
+        ],
+        "alcohol_pc": 32,
+        "category": "Classic",
+        "image_url": "https://images.ctfassets.net/6zncp07wiqyq/3jWOuYUb8G91siO6rw3DmD/50721f8520f43f9890101d21babac098/media_2rvfvadm_the_ultimate_ketel_one_dirty_martini_dba_recipe_570x334.jpg"
+    }
 ]
