@@ -396,13 +396,26 @@ function updateFlavorCounter(){
     );
 
 
+    const container =
+    document.getElementById(
+        "flavorFilterContainer"
+    );
+
+
     if(button){
+
+        const arrow =
+        container &&
+        !container.classList.contains("hidden")
+        ? "▲"
+        : "▼";
+
 
         button.innerHTML =
         `
         Geschmacksprofile
         (${checked.length}/${boxes.length})
-        ▼
+        ${arrow}
         `;
 
     }
@@ -561,27 +574,6 @@ async function init(){
 
     });
 
-    document
-    .getElementById("flavorToggle")
-    ?.addEventListener(
-    "click",
-    ()=>{
-
-
-    const container =
-    document
-    .getElementById(
-    "flavorFilterContainer"
-    );
-
-
-
-    container.classList.toggle(
-    "hidden"
-    );
-
-
-    });
 
     const flavorToggle =
     document.getElementById(
