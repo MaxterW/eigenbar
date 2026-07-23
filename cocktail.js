@@ -23,22 +23,25 @@ new URLSearchParams(location.search)
 
 function renderStars(value){
 
-    const fullStar = "\u2605";
-    const emptyStar = "\u2606";
-
     let stars = "";
 
     for(let i = 1; i <= 5; i++){
 
         if(value >= i){
 
-            stars += fullStar;
+            stars += `<span class="full-star">★</span>`;
+
+        }
+
+        else if(value >= i - 0.5){
+
+            stars += `<span class="half-star">★</span>`;
 
         }
 
         else{
 
-            stars += emptyStar;
+            stars += `<span class="empty-star">☆</span>`;
 
         }
 
@@ -190,11 +193,6 @@ async function loadRatings(){
 
 
 
-
-
-
-console.log("Rating-Form gefunden");
-
 document
 .getElementById("ratingForm")
 .addEventListener(
@@ -234,7 +232,37 @@ location.reload();
 
 });
 
+const ratingSelect =
+document.getElementById("rating");
 
+
+const ratingPreview =
+document.getElementById("ratingPreview");
+
+
+
+function updateRatingPreview(){
+
+
+    const value =
+    Number(ratingSelect.value);
+
+
+    ratingPreview.innerHTML =
+    renderStars(value);
+
+
+}
+
+
+
+ratingSelect.addEventListener(
+"change",
+updateRatingPreview
+);
+
+
+updateRatingPreview();
 
 
 
