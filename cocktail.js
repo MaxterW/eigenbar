@@ -140,23 +140,35 @@ async function loadRatings(){
     const {data,error} =
     await supabaseClient
     .from("ratings")
-    .select("*")
-    .eq("cocktail_id",id)
-    .order(
-        "created_at",
-        {
-            ascending:false
-        }
-    );
+    .insert({
 
+        cocktail_id:id,
+
+        name:
+        document.getElementById("name").value,
+
+        rating:
+        Number(
+        document.getElementById("rating").value
+        ),
+
+        comment:
+        document.getElementById("comment").value
+
+    });
 
 
     if(error){
 
-        console.log(error);
+        console.log("Supabase Fehler:", error);
+        alert(error.message);
         return;
 
     }
+
+
+    console.log("Bewertung gespeichert");
+    location.reload();
 
 
 
