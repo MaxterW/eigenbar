@@ -1,20 +1,115 @@
-/* =========================
-   Geschmacksprofil Accordion
-========================= */
+body {
 
-.flavor-box {
-    margin-top: 15px;
+    font-family: Arial, sans-serif;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    padding: 20px;
+
+    background: #111;
+
+    color: white;
+
 }
 
 
-#flavorToggle {
+
+/* Cocktail Karten */
+
+.card {
+
+    display: block;
+
+    background: #222;
+
+    padding: 20px;
+
+    margin: 20px 0;
+
+    border-radius: 15px;
+
+    color: white;
+
+    text-decoration: none;
+
+}
+
+
+
+.card img {
 
     width: 100%;
 
-    text-align: left;
+    max-height: 300px;
+
+    object-fit: cover;
+
+    border-radius: 10px;
 
 }
 
+
+
+#cocktail img {
+
+    width: 100%;
+
+    max-height: 400px;
+
+    object-fit: cover;
+
+}
+
+
+
+/* Bewertungen */
+
+.rating {
+
+    background: #222;
+
+    padding: 15px;
+
+    margin: 10px 0;
+
+    border-radius: 10px;
+
+}
+
+
+
+/* Formulare */
+
+input,
+textarea,
+select,
+button {
+
+    width: 100%;
+
+    padding: 10px;
+
+    margin: 5px 0;
+
+    font-size: 16px;
+
+}
+
+
+
+button {
+
+    cursor: pointer;
+
+}
+
+
+
+/* =========================
+   Geschmacksprofil Filter
+========================= */
 
 
 .hidden {
@@ -25,11 +120,27 @@
 
 
 
-#flavorFilterContainer {
+.flavor-box {
 
-    margin-top: 10px;
+    margin: 20px 0;
 
-    padding: 15px;
+}
+
+
+
+#flavorToggle {
+
+    width: 100%;
+
+    padding: 10px;
+
+    cursor: pointer;
+
+    background: #222;
+
+    color: white;
+
+    border: 1px solid #555;
 
     border-radius: 10px;
 
@@ -37,14 +148,30 @@
 
 
 
-/* Nur die Geschmacksprofile als Grid */
+#flavorFilterContainer {
+
+    border: 1px solid #555;
+
+    padding: 15px;
+
+    margin-top: 5px;
+
+    border-radius: 10px;
+
+    background: #1a1a1a;
+
+}
+
+
+
+/* Checkbox Grid */
 
 #flavorFilter {
 
     display: grid;
 
     grid-template-columns:
-    repeat(auto-fit, minmax(110px, 1fr));
+    repeat(auto-fit, minmax(130px, 1fr));
 
     gap: 8px 12px;
 
@@ -53,6 +180,8 @@
 }
 
 
+
+/* einzelner Filter */
 
 .flavor-option {
 
@@ -67,7 +196,12 @@
 }
 
 
+
 .flavor-option input {
+
+    width: auto;
+
+    margin: 0;
 
     flex-shrink: 0;
 
@@ -78,5 +212,24 @@
 .flavor-option span {
 
     white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+}
+
+
+
+/* Buttons innerhalb der Filterbox */
+
+#selectAllFlavors,
+#deselectAllFlavors {
+
+    width: auto;
+
+    margin-top: 15px;
+
+    margin-right: 10px;
 
 }
