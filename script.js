@@ -159,7 +159,7 @@ function createFilters(){
             flavorContainer.innerHTML +=
             `
 
-            <label>
+            <label class="flavor-option">
 
             <input
             type="checkbox"
@@ -168,11 +168,9 @@ function createFilters(){
             checked
             >
 
-            ${flavor}
+            <span>${flavor}</span>
 
             </label>
-
-            <br>
 
             `;
 
