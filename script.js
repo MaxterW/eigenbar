@@ -1,109 +1,152 @@
-const SUPABASE_URL = "https://jnizemsqcwescmagohuw.supabase.co";
-const SUPABASE_KEY = "sb_publishable_yBd-5ZjZPVUJRyLqhyq4IA_nIfYZAAK";
+const SUPABASE_URL =
+"https://DEINE_URL.supabase.co";
 
-console.log("Supabase URL:", SUPABASE_URL);
 
-const supabaseClient = supabase.createClient(
+const SUPABASE_KEY =
+"sb_publishable_yBd-5ZjZPVUJRyLqhyq4IA_nIfYZAAK";
+
+
+const supabaseClient =
+supabase.createClient(
     SUPABASE_URL,
     SUPABASE_KEY
 );
 
-fetch("cocktails.json")
-.then(response => response.json())
-.then(data => {
-
-let container =
-document.getElementById("cocktails");
 
 
-data.forEach(drink => {
+function renderStars(value){
 
-container.innerHTML += `
+    let stars = "";
 
-<div class="card">
+    for(let i = 1; i <= 5; i++){
 
-<h2>${drink.name}</h2>
+        if(value >= i){
+            stars += "★";
+        }
 
-<ul>
-${drink.zutaten.map(x=>`<li>${x}</li>`).join("")}
-</ul>
+        else if(value >= i - 0.5){
+            stars += "⯨";
+        }
 
-<form onsubmit="submitRating(event, ${drink.id})">
+        else{
+            stars += "☆";
+        }
+    }
 
-<input 
-id="name-${drink.id}"
-placeholder="Dein Name">
-
-<br>
-
-<select id="rating-${drink.id}">
-<option value="5">★★★★★</option>
-<option value="4">★★★★</option>
-<option value="3">★★★</option>
-<option value="2">★★</option>
-<option value="1">★</option>
-</select>
-
-<br>
-
-<textarea 
-id="comment-${drink.id}"
-placeholder="Kommentar">
-</textarea>
-
-<br>
-
-<button>
-Absenden
-</button>
-
-</form>
-
-<div id="ratings-${drink.id}"></div>
-
-</div>
-
-`;
-
-});
-
-});
-
-async function submitRating(event, cocktailId){
-
-event.preventDefault();
-
-
-let name =
-document.getElementById(`name-${cocktailId}`).value;
-
-
-let rating =
-document.getElementById(`rating-${cocktailId}`).value;
-
-
-let comment =
-document.getElementById(`comment-${cocktailId}`).value;
-
-
-const {error} = await supabaseClient
-.from("ratings")
-.insert([
-{
-cocktail_id: cocktailId,
-name:name,
-rating:rating,
-comment:comment
-}
-]);
-
-
-if(error){
-    console.error("Supabase Fehler:", error);
-    alert("Fehler: " + error.message);
-}
-else{
-    alert("Danke für deine Bewertung!");
+    return stars;
 }
 
+
+
+
+async function getAverageRating(id){
+
+
+    const {data,error} =
+    await supabaseClient
+    .from("ratings")
+    .select("rating")
+    .eq("cocktail_id",id);
+
+
+
+    if(error || data.length === 0){
+
+        return "Keine Bewertungen";
+
+    }
+
+
+
+    const average =
+    data.reduce(
+        (sum,r)=>sum + Number(r.rating),
+        0
+    ) / data.length;
+
+
+
+    return `
+    ${renderStars(average)}
+    <br>
+    ${average.toFixed(1)} / 5
+    `;
+
 }
+
+
+
+
+async function loadCocktails(){
+
+
+    const response =
+    await fetch("cocktails.json");
+
+
+    const cocktails =
+    await response.json();
+
+
+
+    const container =
+    document.getElementById("cocktails");
+
+
+
+    for(const cocktail of cocktails){
+
+
+
+        const rating =
+        await getAverageRating(cocktail.id);
+
+
+
+        container.innerHTML += `
+
+
+        <a class="card"
+        href="cocktail.html?id=${cocktail.id}">
+
+
+            <img src="${cocktail.image_url}">
+
+
+            <h2>
+            ${cocktail.name}
+            </h2>
+
+
+            <p>
+            ${cocktail.ingredients
+            .map(i=>i.name)
+            .join(", ")}
+            </p>
+
+
+            <p>
+            ${cocktail.category}
+            |
+            ${cocktail.alcohol_pc} %
+            </p>
+
+
+            <div>
+            ${rating}
+            </div>
+
+
+        </a>
+
+
+        `;
+
+
+    }
+
+
+}
+
+
+loadCocktails();

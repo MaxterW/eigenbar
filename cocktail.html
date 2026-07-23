@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cocktail</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<a href="index.html">
+← Zurück
+</a>
+
+
+<div id="cocktail"></div>
+
+
+<h2>Bewertungen</h2>
+
+<div id="ratings"></div>
+
+
+
+<h2>Bewerten</h2>
+
+
+<form id="ratingForm">
+
+
+<input id="name"
+placeholder="Name">
+
+
+<select id="rating">
+
+<option value="5">★★★★★ 5</option>
+<option value="4.5">★★★★⯨ 4.5</option>
+<option value="4">★★★★☆ 4</option>
+<option value="3.5">★★★⯨☆ 3.5</option>
+<option value="3">★★★☆☆ 3</option>
+<option value="2.5">★★⯨☆☆ 2.5</option>
+<option value="2">★★☆☆☆ 2</option>
+<option value="1.5">★⯨☆☆☆ 1.5</option>
+<option value="1">★☆☆☆☆ 1</option>
+<option value="0.5">⯨☆☆☆☆ 0.5</option>
+
+</select>
+
+
+<textarea id="comment"
+placeholder="Kommentar"></textarea>
+
+
+<button>
+Absenden
+</button>
+
+
+</form>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="cocktail.js"></script>
+
+
+</body>
+
+</html>
