@@ -97,3 +97,43 @@ button {
 cursor:pointer;
 
 }
+
+
+#filterbox for flavour
+
+.hidden {
+    display: none;
+}
+
+
+.flavor-box {
+    margin: 20px 0;
+}
+
+
+#flavorToggle {
+
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+
+}
+
+
+
+#flavorFilterContainer {
+
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-top: 5px;
+
+}
+
+
+
+#flavorFilter label {
+
+    display: inline-block;
+    margin: 5px 10px 5px 0;
+
+}

@@ -110,8 +110,9 @@ function createFilters(){
     document.getElementById("categoryFilter");
 
 
-    const flavorSelect =
+    const flavorContainer =
     document.getElementById("flavorFilter");
+
 
 
     if(categorySelect){
@@ -125,9 +126,11 @@ function createFilters(){
         categories.forEach(category=>{
 
             categorySelect.innerHTML +=
-            `<option value="${category}">
+            `
+            <option value="${category}">
             ${category}
-            </option>`;
+            </option>
+            `;
 
         });
 
@@ -135,7 +138,9 @@ function createFilters(){
 
 
 
-    if(flavorSelect){
+
+    if(flavorContainer){
+
 
         const flavors =
         [...new Set(
@@ -150,14 +155,33 @@ function createFilters(){
 
         flavors.forEach(flavor=>{
 
-            flavorSelect.innerHTML +=
-            `<option value="${flavor}">
+
+            flavorContainer.innerHTML +=
+            `
+
+            <label>
+
+            <input
+            type="checkbox"
+            class="flavorCheckbox"
+            value="${flavor}"
+            checked
+            >
+
             ${flavor}
-            </option>`;
+
+            </label>
+
+            <br>
+
+            `;
+
 
         });
 
+
     }
+
 
 }
 
@@ -236,22 +260,28 @@ function applyFilters(){
 
 
 
-    const flavor =
-    document
-    .getElementById("flavorFilter")
-    ?.value;
+    const selectedFlavors =
+    [
+        ...document
+        .querySelectorAll(".flavorCheckbox:checked")
+    ]
+    .map(cb=>cb.value);
 
 
 
-    if(flavor){
+    if(
+    selectedFlavors.length > 0
+    ){
 
-        filtered =
-        filtered.filter(c=>
+    filtered =
+    filtered.filter(c=>
 
-            c.flavor_profile &&
-            c.flavor_profile.includes(flavor)
+        c.flavor_profile?.some(
+            flavor =>
+            selectedFlavors.includes(flavor)
+        )
 
-        );
+    );
 
     }
 
@@ -432,6 +462,85 @@ async function init(){
 
         }
     );
+
+    document
+    .querySelectorAll(".flavorCheckbox")
+    .forEach(box=>{
+
+        box.addEventListener(
+            "change",
+            applyFilters
+        );
+
+    });
+
+    document
+    .getElementById("selectAllFlavors")
+    ?.addEventListener(
+    "click",
+    ()=>{
+
+
+    document
+    .querySelectorAll(".flavorCheckbox")
+    .forEach(box=>{
+
+        box.checked=true;
+
+    });
+
+
+    applyFilters();
+
+
+    });
+
+
+
+
+
+    document
+    .getElementById("deselectAllFlavors")
+    ?.addEventListener(
+    "click",
+    ()=>{
+
+
+    document
+    .querySelectorAll(".flavorCheckbox")
+    .forEach(box=>{
+
+        box.checked=false;
+
+    });
+
+
+    applyFilters();
+
+
+    });
+
+    document
+    .getElementById("flavorToggle")
+    ?.addEventListener(
+    "click",
+    ()=>{
+
+
+    const container =
+    document
+    .getElementById(
+    "flavorFilterContainer"
+    );
+
+
+
+    container.classList.toggle(
+    "hidden"
+    );
+
+
+    });
 
 }
 
