@@ -41,7 +41,7 @@ function renderStars(value){
 
         else{
 
-            stars += `<span class="empty-star">☆</span>`;
+            stars += `<span class="empty-star">★</span>`;
 
         }
 

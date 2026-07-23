@@ -107,18 +107,38 @@ body {
 
 }
 
+.star {
+
+    font-size: 24px;
+
+    letter-spacing: 2px;
+
+}
+
+.star.filled {
+
+    color: white;
+
+}
+
 .half-star {
 
     background: linear-gradient(
         90deg,
         white 50%,
-        #555 50%
+        #444 50%
     );
 
     background-clip: text;
     -webkit-background-clip: text;
 
     color: transparent;
+
+}
+
+.star.empty {
+
+    color: #444;
 
 }
 
