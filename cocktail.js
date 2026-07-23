@@ -201,7 +201,7 @@ async function loadRatings(){
 
 
 
-
+console.log("Rating-Form gefunden");
 
 document
 .getElementById("ratingForm")
