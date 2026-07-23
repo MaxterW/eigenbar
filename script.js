@@ -97,8 +97,8 @@ comment:comment
 
 
 if(error){
-alert("Fehler beim Speichern");
-console.log(error);
+    alert(error.message);
+    console.log(error);
 }
 else{
 alert("Danke für deine Bewertung!");
