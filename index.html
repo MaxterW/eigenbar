@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>EigenBar</title>
 
 <link rel="stylesheet" href="style.css">
@@ -7,7 +16,9 @@
 
 <body>
 
+
 <h1>EigenBar</h1>
+
 
 <div id="filters">
 
@@ -25,7 +36,6 @@ Alle Kategorien
 </option>
 
 </select>
-
 
 
 
@@ -48,33 +58,57 @@ value="50"
 </span>
 
 
+
 <div class="flavor-box">
 
-    <button id="flavorToggle" type="button">
-        Geschmacksprofile (0/0) ▼
-    </button>
+
+<button 
+id="flavorToggle" 
+type="button">
+
+Geschmacksprofile (0/0) ▼
+
+</button>
 
 
-    <div id="flavorFilterContainer" class="hidden">
 
-        <div id="flavorFilter"></div>
-
-
-        <button id="selectAllFlavors" type="button">
-            Alle auswählen
-        </button>
+<div 
+id="flavorFilterContainer" 
+class="hidden">
 
 
-        <button id="deselectAllFlavors" type="button">
-            Alle abwählen
-        </button>
+<div id="flavorFilter"></div>
 
-    </div>
+
+
+<button 
+id="selectAllFlavors" 
+type="button">
+
+Alle auswählen
+
+</button>
+
+
+
+<button 
+id="deselectAllFlavors" 
+type="button">
+
+Alle abwählen
+
+</button>
+
 
 </div>
 
 
+</div>
+
+
+
 <div id="cocktails"></div>
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
