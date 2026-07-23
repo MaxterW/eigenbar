@@ -214,7 +214,6 @@ e.preventDefault();
 
 
 
-const {data,error} =
 await supabaseClient
 .from("ratings")
 .insert({
@@ -224,10 +223,12 @@ await supabaseClient
     name:
     document.getElementById("name").value,
 
+
     rating:
     Number(
     document.getElementById("rating").value
     ),
+
 
     comment:
     document.getElementById("comment").value
@@ -235,16 +236,7 @@ await supabaseClient
 });
 
 
-if(error){
 
-    console.log("Supabase Fehler:", error);
-    alert(error.message);
-    return;
-
-}
-
-
-console.log("Bewertung gespeichert");
 location.reload();
 
 
