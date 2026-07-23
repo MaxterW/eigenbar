@@ -16,25 +16,22 @@ let averageRatings = {};
 
 function renderStars(value){
 
+    const fullStar = "\u2605";
+    const emptyStar = "\u2606";
+
     let stars = "";
 
     for(let i = 1; i <= 5; i++){
 
         if(value >= i){
 
-            stars += `<span class="full-star">★</span>`;
-
-        }
-
-        else if(value >= i - 0.5){
-
-            stars += `<span class="half-star">★</span>`;
+            stars += fullStar;
 
         }
 
         else{
 
-            stars += `<span class="empty-star">☆</span>`;
+            stars += emptyStar;
 
         }
 

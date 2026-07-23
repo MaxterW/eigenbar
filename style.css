@@ -107,6 +107,10 @@ body {
 
 }
 
+.rating {
+    font-size: 24px;
+}
+
 .half-star {
 
     background: linear-gradient(
