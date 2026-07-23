@@ -376,7 +376,38 @@ function displayCocktails(cocktails){
 }
 
 
+function updateFlavorCounter(){
 
+    const boxes =
+    document.querySelectorAll(
+        ".flavorCheckbox"
+    );
+
+
+    const checked =
+    document.querySelectorAll(
+        ".flavorCheckbox:checked"
+    );
+
+
+    const button =
+    document.getElementById(
+        "flavorToggle"
+    );
+
+
+    if(button){
+
+        button.innerHTML =
+        `
+        Geschmacksprofile
+        (${checked.length}/${boxes.length})
+        ▼
+        `;
+
+    }
+
+}
 
 
 async function init(){
@@ -419,6 +450,8 @@ async function init(){
 
 
     createFilters();
+
+    updateFlavorCounter();
 
 
 
@@ -469,7 +502,13 @@ async function init(){
 
         box.addEventListener(
             "change",
-            applyFilters
+            ()=>{
+
+                updateFlavorCounter();
+
+                applyFilters();
+
+            }
         );
 
     });
@@ -489,6 +528,7 @@ async function init(){
 
     });
 
+    updateFlavorCounter();
 
     applyFilters();
 
@@ -514,6 +554,7 @@ async function init(){
 
     });
 
+    updateFlavorCounter();
 
     applyFilters();
 
@@ -538,6 +579,31 @@ async function init(){
     container.classList.toggle(
     "hidden"
     );
+
+
+    });
+
+    const flavorToggle =
+    document.getElementById(
+        "flavorToggle"
+    );
+
+
+    const flavorContainer =
+    document.getElementById(
+        "flavorFilterContainer"
+    );
+
+
+
+    flavorToggle.addEventListener(
+    "click",
+    ()=>{
+
+
+        flavorContainer.classList.toggle(
+            "hidden"
+        );
 
 
     });
