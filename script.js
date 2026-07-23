@@ -360,13 +360,35 @@ async function init(){
     await response.json();
 
 
-    averageRatings =
-    await loadRatings();
+    // Sofort anzeigen
+    displayCocktails(allCocktails);
+
+
+
+    // Danach Bewertungen nachladen
+    try {
+
+        averageRatings =
+        await loadRatings();
+
+
+        displayCocktails(allCocktails);
+
+
+    }
+
+    catch(error){
+
+        console.error(
+            "Bewertungen konnten nicht geladen werden:",
+            error
+        );
+
+    }
+
 
 
     createFilters();
-
-    displayCocktails(allCocktails);
 
 
 
@@ -378,14 +400,12 @@ async function init(){
     );
 
 
-
     document
     .getElementById("categoryFilter")
     ?.addEventListener(
         "change",
         applyFilters
     );
-
 
 
     document
@@ -396,17 +416,17 @@ async function init(){
     );
 
 
-
     document
     .getElementById("alcoholFilter")
     ?.addEventListener(
         "input",
         e=>{
 
-            document.getElementById(
-                "alcoholValue"
-            ).textContent =
+            document
+            .getElementById("alcoholValue")
+            .textContent =
             e.target.value + " %";
+
 
             applyFilters();
 
