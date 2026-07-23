@@ -10,11 +10,17 @@
         ],
         "alcohol_pc": 29,
         "category": "Classic",
+        "flavor_profile": [
+          "würzig",
+          "süß",
+          "kräftig"
+        ],
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Whiskey_Old_Fashioned1.jpg/972px-Whiskey_Old_Fashioned1.jpg"
     },
     {
         "id": 2,
         "name": "Negroni",
+        "description": "",
         "ingredients": [
             {"name": "Campari"},
             {"name": "Süßer Wermut"},
@@ -22,22 +28,34 @@
         ],
         "alcohol_pc": 22,
         "category": "Classic",
+        "flavor_profile": [
+          "bitter",
+          "herb",
+          "trocken"
+        ],
         "image_url": "https://www.maltwhisky.de/wp-content/uploads/2021/02/negroni-cocktail-1160px.jpg"
     },
     {
         "id": 3,
         "name": "Gin & Tonic",
+        "description": "",
         "ingredients": [
             {"name": "Gin"},
             {"name": "Tonic Water"}
         ],
         "alcohol_pc": 16,
         "category": "Classic",
+        "flavor_profile": [
+          "frisch",
+          "herb",
+          "trocken"
+        ],
         "image_url": "https://www.gutekueche.at/storage/media/recipe/7027/gin-tonic-mit-gurke.jpg"
     },
     {
         "id": 4,
         "name": "Manhatten",
+        "description": "",
         "ingredients": [
             {"name": "Rye Whiskey"},
             {"name": "Süßer Wermut"},
@@ -45,28 +63,415 @@
         ],
         "alcohol_pc": 24,
         "category": "Classic",
+        "flavor_profile": [
+          "kräftig",
+          "herb",
+          "würzig"
+        ],
         "image_url": "https://www.liquor.com/thmb/DR2UAsRlu-YCVn9r_iLJCmOvzlg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/manhattan-4000x4000-primary-ig-9c3d894510284e9d8fbd9c518d00790b.jpg"
     },
     {
         "id": 5,
         "name": "Martini",
+        "description": "",
         "ingredients": [
             {"name": "Gin"},
             {"name": "Trockener Wermut"}
         ],
         "alcohol_pc": 23,
         "category": "Classic",
+        "flavor_profile": [
+          "trocken",
+          "herb",
+          "floral"
+        ],
         "image_url": "https://images.ctfassets.net/6zncp07wiqyq/3jWOuYUb8G91siO6rw3DmD/50721f8520f43f9890101d21babac098/media_2rvfvadm_the_ultimate_ketel_one_dirty_martini_dba_recipe_570x334.jpg"
     },
     {
         "id": 6,
+        "name": "Moscow Mule",
+        "description": "",
+        "ingredients": [
+            { "name": "Vodka" },
+            { "name": "Ginger Beer" },
+            { "name": "Limettensaft" }
+        ],
+        "alcohol_pc": 9,
+        "category": "Classic",
+        "flavor_profile": [
+            "frisch",
+            "spicy",
+            "süß"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 7,
+        "name": "Daiquiri",
+        "description": "",
+        "ingredients": [
+            { "name": "Weißer Rum" },
+            { "name": "Limettensaft" },
+            { "name": "Zuckersirup" }
+        ],
+        "alcohol_pc": 14,
+        "category": "Classic",
+        "flavor_profile": [
+            "frisch",
+            "fruchtig",
+            "sauer"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 8,
+        "name": "Cosmopolitan",
+        "description": "",
+        "ingredients": [
+            { "name": "Citrus Vodka" },
+            { "name": "Triple Sec" },
+            { "name": "Cranberrysaft" },
+            { "name": "Limettensaft" }
+        ],
+        "alcohol_pc": 15,
+        "category": "Classic",
+        "flavor_profile": [
+            "sauer",
+            "frisch"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 9,
+        "name": "Mojito",
+        "description": "",
+        "ingredients": [
+            { "name": "Weißer Rum" },
+            { "name": "Limettensaft" },
+            { "name": "Minze" },
+            { "name": "Zuckersirup" },
+            { "name": "Sodawasser" }
+        ],
+        "alcohol_pc": 7,
+        "category": "Classic",
+        "flavor_profile": [
+            "frisch",
+            "leicht"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 10,
+        "name": "Tequila Sunrise",
+        "description": "",
+        "ingredients": [
+            { "name": "Tequila" },
+            { "name": "Orangensaft" },
+            { "name": "Grenadine" }
+        ],
+        "alcohol_pc": 10,
+        "category": "Classic",
+        "flavor_profile": [
+            "fruchtig",
+            "süß"
+        ],
+        "image_url": "x"
+    }
+    {
+        "id": 11,
         "name": "Vodka Martini",
+        "description": "",
         "ingredients": [
             {"name": "Vodka"},
             {"name": "Trockener Wermut"}
         ],
         "alcohol_pc": 32,
         "category": "Classic",
+        "flavor_profile": [
+          "trocken",
+          "herb"
+        ],
         "image_url": "https://images.ctfassets.net/6zncp07wiqyq/3jWOuYUb8G91siO6rw3DmD/50721f8520f43f9890101d21babac098/media_2rvfvadm_the_ultimate_ketel_one_dirty_martini_dba_recipe_570x334.jpg"
+    },
+    {
+        "id": 12,
+        "name": "London Mule",
+        "description": "",
+        "ingredients": [
+            { "name": "Gin" },
+            { "name": "Ginger Beer" },
+            { "name": "Limettensaft" }
+        ],
+        "alcohol_pc": 9,
+        "category": "Classic",
+        "flavor_profile": [
+            "frisch",
+            "würzig",
+            "leicht"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 13,
+        "name": "Kentucky Mule",
+        "description": "",
+        "ingredients": [
+            { "name": "Bourbon Whiskey" },
+            { "name": "Ginger Beer" },
+            { "name": "Limettensaft" }
+        ],
+        "alcohol_pc": 9,
+        "category": "Classic",
+        "flavor_profile": [
+            "frisch",
+            "würzig",
+            "süß"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 14,
+        "name": "Boulevardier",
+        "description": "'This isn't a Negroni. It is, however, the Negroni's long lost autumnal cousin.' - Paul Clark",
+        "ingredients": [
+            { "name": "Bourbon Whiskey" },
+            { "name": "Campari" },
+            { "name": "Süßer Wermut" }
+        ],
+        "alcohol_pc": 22,
+        "category": "Classic",
+        "flavor_profile": [
+            "bitter",
+            "kräftig",
+            "herb"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 15,
+        "name": "Americano",
+        "description": "Originally known as the 'Milano-Torino' because of its ingredients: Campari, bitter liqueur from Milan, and Punt e Mes, vermouth from Turin. The name is an homage to Primo Carnera, who was the first Italian boxer (and the first non-American) to win the world heavyweight championship in the USA.",
+        "ingredients": [
+            { "name": "Campari" },
+            { "name": "Süßer Wermut" },
+            { "name": "Sodawasser" }
+        ],
+        "alcohol_pc": 13,
+        "category": "Classic",
+        "flavor_profile": [
+            "bitter",
+            "herb",
+            "leicht"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 16,
+        "name": "Negroni Sbagliato",
+        "description": "Said to be created when someone grabbed the Prosecco rather than gin, the name translates to 'mistaken'",
+        "ingredients": [
+            { "name": "Campari" },
+            { "name": "Süßer Wermut" },
+            { "name": "Prosecco" }
+        ],
+        "alcohol_pc": 12,
+        "category": "Classic",
+        "flavor_profile": [
+            "bitter",
+            "herb",
+            "leicht"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 17,
+        "name": "Derby Daiquiri",
+        "description": "By Mariano Licudine, who won a 1959 rum cocktail competition with this drink",
+        "ingredients": [
+            { "name": "Weißer Rum" },
+            { "name": "Orangensaft" },
+            { "name": "Limettensaft" },
+            { "name": "Zuckersirup" }
+        ],
+        "alcohol_pc": 9,
+        "category": "Classic",
+        "flavor_profile": [
+            "fruchtig",
+            "frisch",
+            "sauer"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 18,
+        "name": "Hemingway Special",
+        "description": "",
+        "ingredients": [
+            { "name": "Weißer Rum" },
+            { "name": "Limettensaft" },
+            { "name": "Grapefruitsaft" },
+            { "name": "Maraschino-Likör" }
+        ],
+        "alcohol_pc": 15,
+        "category": "Classic",
+        "flavor_profile": [
+            "fruchtig",
+            "sauer",
+            "trocken"
+        ],
+        "image_url": "x"
+    }
+    {
+        "id": 19,
+        "name": "Whiskey Sour",
+        "description": "First documented in Jerry Thomas' 1862 cocktail book and one of the world's definitive sour cocktails.",
+        "ingredients": [
+            { "name": "Bourbon Whiskey" },
+            { "name": "Zitronensaft" },
+            { "name": "Zuckersirup" },
+            { "name": "Eiweiß" }
+        ],
+        "alcohol_pc": 14,
+        "category": "Classic",
+        "flavor_profile": [
+            "sauer",
+            "kräftig",
+            "leicht"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 20,
+        "name": "Gin Sour",
+        "description": "A simple sour that showcases gin's botanicals with fresh lemon juice and sugar.",
+        "ingredients": [
+            { "name": "Gin" },
+            { "name": "Zitronensaft" },
+            { "name": "Zuckersirup" },
+            { "name": "Eiweiß" }
+        ],
+        "alcohol_pc": 15,
+        "category": "Classic",
+        "flavor_profile": [
+            "sauer",
+            "frisch",
+            "floral"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 21,
+        "name": "Brandy Sour",
+        "description": "Cyprus' national cocktail, created in the 1930s for King Farouk of Egypt.",
+        "ingredients": [
+            { "name": "Brandy" },
+            { "name": "Zitronensaft" },
+            { "name": "Zuckersirup" },
+            { "name": "Eiweiß" }
+        ],
+        "alcohol_pc": 17,
+        "category": "Classic",
+        "flavor_profile": [
+            "sauer",
+            "leicht",
+            "fruchtig"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 22,
+        "name": "Amaretto Sour",
+        "description": "A 1970s classic.",
+        "ingredients": [
+            { "name": "Amaretto" },
+            { "name": "Zitronensaft" },
+            { "name": "Eiweiß" }
+        ],
+        "alcohol_pc": 13,
+        "category": "Classic",
+        "flavor_profile": [
+            "süß",
+            "nussig",
+            "sauer"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 23,
+        "name": "Aperol Sour",
+        "description": "A modern sour highlighting Aperol's bittersweet orange character.",
+        "ingredients": [
+            { "name": "Aperol" },
+            { "name": "Zitronensaft" },
+            { "name": "Zuckersirup" },
+            { "name": "Eiweiß" }
+        ],
+        "alcohol_pc": 4,
+        "category": "Classic",
+        "flavor_profile": [
+            "bitter",
+            "fruchtig",
+            "sauer"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 24,
+        "name": "Jäger Sour",
+        "description": "A contemporary sour that turns Jägermeister's herbal complexity into a surprisingly balanced cocktail.",
+        "ingredients": [
+            { "name": "Jägermeister" },
+            { "name": "Orangensaft" },
+            { "name": "Zitronensaft" },
+            { "name": "Zuckersirup" },
+            { "name": "Eiweiß" }
+        ],
+        "alcohol_pc": 10,
+        "category": "Classic",
+        "flavor_profile": [
+            "würzig",
+            "herb",
+            "sauer"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 25,
+        "name": "New York Sour",
+        "description": "A Whiskey Sour finished with a floating layer of dry red wine for extra depth and color.",
+        "ingredients": [
+            { "name": "Bourbon Whiskey" },
+            { "name": "Zitronensaft" },
+            { "name": "Zuckersirup" },
+            { "name": "Eiweiß" },
+            { "name": "Rotwein" }
+        ],
+        "alcohol_pc": 12,
+        "category": "Classic",
+        "flavor_profile": [
+            "kräftig",
+            "sauer"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 26,
+        "name": "Continental Sour",
+        "description": "A New York Sour variation that replaces red wine with port for a richer finish.",
+        "ingredients": [
+            { "name": "Bourbon Whiskey" },
+            { "name": "Zitronensaft" },
+            { "name": "Zuckersirup" },
+            { "name": "Eiweiß" },
+            { "name": "Angostura Bitters" },
+            { "name": "Portwein" }
+        ],
+        "alcohol_pc": 12,
+        "category": "Classic",
+        "flavor_profile": [
+            "kräftig",
+            "sauer"
+        ],
+        "image_url": "x"
     }
 ]
