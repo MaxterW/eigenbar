@@ -1,9 +1,12 @@
+console.log("GALAXY JS GELADEN");
+
+
 // ===============================
-// Test Cocktail Daten
+// Cocktail Daten
 // ===============================
+
 
 const cocktails = [
-
 
 {
 name:"Mojito",
@@ -22,7 +25,6 @@ spirit:.1
 }
 },
 
-
 {
 name:"Old Fashioned",
 spirit:"Whiskey",
@@ -39,7 +41,6 @@ strong:.8,
 spirit:.8
 }
 },
-
 
 {
 name:"Negroni",
@@ -58,7 +59,6 @@ spirit:.8
 }
 },
 
-
 {
 name:"Daiquiri",
 spirit:"Rum",
@@ -75,7 +75,6 @@ strong:.4,
 spirit:.4
 }
 },
-
 
 {
 name:"Martini",
@@ -94,7 +93,6 @@ spirit:1
 }
 },
 
-
 {
 name:"Moscow Mule",
 spirit:"Vodka",
@@ -111,7 +109,6 @@ strong:.3,
 spirit:.2
 }
 },
-
 
 {
 name:"Manhattan",
@@ -130,7 +127,6 @@ spirit:.8
 }
 },
 
-
 {
 name:"Aperol Spritz",
 spirit:"Aperol",
@@ -147,7 +143,6 @@ strong:.2,
 spirit:.2
 }
 },
-
 
 {
 name:"Penicillin",
@@ -166,7 +161,6 @@ spirit:.7
 }
 },
 
-
 {
 name:"Cosmopolitan",
 spirit:"Vodka",
@@ -184,7 +178,6 @@ spirit:.3
 }
 }
 
-
 ];
 
 
@@ -197,45 +190,34 @@ spirit:.3
 
 function projectA(c){
 
-
 const f=c.features;
 
 
-// Alkoholachse
-
-let x=f.strong;
-
+// x = Stärke / Alkohol
+let x = f.strong;
 
 
-// frisch ↔ schwer
-
+// y = frisch ↔ schwer
 let y =
-(f.sour+f.fruity)
+(f.sour + f.fruity)
 -
-(f.creamy+f.smoky+f.strong);
+(f.creamy + f.smoky + f.strong);
 
 
-
-// fruchtig ↔ spirit-forward
-
+// z = fruchtig ↔ spirit forward
 let z =
-f.fruity-f.spirit;
-
+f.fruity - f.spirit;
 
 
 return {
 
 x:x*5,
-
 y:y*5,
-
 z:z*5
 
 };
 
-
 }
-
 
 
 
@@ -280,7 +262,10 @@ renderer.domElement
 
 
 
-// Text Renderer
+// ===============================
+// CSS Labels
+// ===============================
+
 
 const labelRenderer =
 new THREE.CSS2DRenderer();
@@ -304,8 +289,10 @@ labelRenderer.domElement
 
 
 
+// ===============================
+// Controls
+// ===============================
 
-// Kamera Steuerung
 
 const controls =
 new THREE.OrbitControls(
@@ -313,9 +300,132 @@ camera,
 renderer.domElement
 );
 
-console.log("Controls:", controls);
 
 controls.enableDamping=true;
+
+console.log("Controls:", controls);
+
+
+
+// ===============================
+// Koordinatensystem
+// ===============================
+
+
+const axisLength=8;
+
+
+function createAxis(start,end,color){
+
+const line =
+new THREE.Line(
+
+new THREE.BufferGeometry()
+.setFromPoints([
+start,
+end
+]),
+
+new THREE.LineBasicMaterial({
+color:color
+})
+
+);
+
+scene.add(line);
+
+}
+
+
+
+createAxis(
+new THREE.Vector3(-axisLength,0,0),
+new THREE.Vector3(axisLength,0,0),
+0xff0000
+);
+
+
+createAxis(
+new THREE.Vector3(0,-axisLength,0),
+new THREE.Vector3(0,axisLength,0),
+0x00ff00
+);
+
+
+createAxis(
+new THREE.Vector3(0,0,-axisLength),
+new THREE.Vector3(0,0,axisLength),
+0x0000ff
+);
+
+
+
+// Ursprung
+
+const origin =
+new THREE.Mesh(
+
+new THREE.SphereGeometry(
+0.12,
+16,
+16
+),
+
+new THREE.MeshBasicMaterial({
+color:0xffffff
+})
+
+);
+
+
+scene.add(origin);
+
+
+
+
+// Achsenlabels
+
+function createLabel(text,position){
+
+
+const div =
+document.createElement("div");
+
+div.className="label";
+
+div.textContent=text;
+
+
+const label =
+new THREE.CSS2DObject(div);
+
+
+label.position.copy(position);
+
+
+scene.add(label);
+
+}
+
+
+createLabel(
+"X",
+new THREE.Vector3(axisLength+.5,0,0)
+);
+
+
+createLabel(
+"Y",
+new THREE.Vector3(0,axisLength+.5,0)
+);
+
+
+createLabel(
+"Z",
+new THREE.Vector3(0,0,axisLength+.5)
+);
+
+
 
 
 
@@ -327,13 +437,9 @@ controls.enableDamping=true;
 const colors={
 
 Gin:0x55ff55,
-
 Rum:0xffff55,
-
 Whiskey:0xff5555,
-
 Vodka:0x5555ff,
-
 Aperol:0xff8800
 
 };
@@ -342,7 +448,7 @@ Aperol:0xff8800
 
 
 // ===============================
-// Sterne erstellen
+// Cocktails erstellen
 // ===============================
 
 
@@ -356,7 +462,7 @@ projectA(c);
 
 const geometry =
 new THREE.SphereGeometry(
-0.18,
+0.25,
 20,
 20
 );
@@ -367,7 +473,9 @@ const material =
 new THREE.MeshBasicMaterial({
 
 color:
-colors[c.spirit] || 0xffffff
+colors[c.spirit] || 0xffffff,
+
+transparent:true
 
 });
 
@@ -393,6 +501,12 @@ scene.add(sphere);
 
 
 
+// Speichern für Animation
+
+sphere.userData.isCocktail=true;
+
+
+
 // Label
 
 const div =
@@ -404,12 +518,11 @@ div.className="label";
 div.textContent=c.name;
 
 
-
 const label =
 new THREE.CSS2DObject(div);
 
 
-label.position.y=0.3;
+label.position.y=0.35;
 
 
 sphere.add(label);
@@ -434,13 +547,61 @@ animate
 );
 
 
+
 controls.update();
+
+
+
+// Kameraabhängige Darstellung
+
+scene.children.forEach(obj=>{
+
+
+if(obj.userData.isCocktail){
+
+
+const distance =
+camera.position.distanceTo(
+obj.position
+);
+
+
+
+const scale =
+THREE.MathUtils.clamp(
+1-distance/35,
+0.25,
+1
+);
+
+
+
+obj.scale.setScalar(
+scale
+);
+
+
+
+obj.material.opacity =
+THREE.MathUtils.clamp(
+1-distance/35,
+0.15,
+1
+);
+
+
+}
+
+
+});
+
 
 
 renderer.render(
 scene,
 camera
 );
+
 
 
 labelRenderer.render(
@@ -450,6 +611,7 @@ camera
 
 
 }
+
 
 
 animate();
