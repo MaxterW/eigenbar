@@ -750,7 +750,7 @@ transformProgress < 0.5
 
 ?
 
-4 *
+8 *
 transformProgress *
 transformProgress *
 transformProgress
@@ -760,7 +760,7 @@ transformProgress
 1 -
 Math.pow(
 -2 * transformProgress + 2,
-3
+5
 ) / 2;
 
 
