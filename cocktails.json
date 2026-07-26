@@ -12,7 +12,7 @@
         "category": "Classic",
         "flavor_profile": [
           "würzig",
-          "süß",
+          "schwer",
           "kräftig"
         ],
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Whiskey_Old_Fashioned1.jpg/972px-Whiskey_Old_Fashioned1.jpg"
@@ -473,5 +473,918 @@
             "sauer"
         ],
         "image_url": "x"
+    },
+    {
+        "id": 27,
+        "name": "Paloma",
+        "description": "One of Mexico's most beloved tequila cocktails, balancing tequila with grapefruit soda for a refreshing finish.",
+        "ingredients": [
+            {"name": "Tequila Blanco"},
+            {"name": "Grapefruitsaft"},
+            {"name": "Limettensaft"},
+            {"name": "Zuckersirup"},
+            {"name": "Sodawasser"}
+        ],
+        "alcohol_pc": 8,
+        "category": "Highball",
+        "flavor_profile": [
+            "frisch",
+            "fruchtig",
+            "leicht"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 28,
+        "name": "Dark and Stormy",
+        "description": "National drink of Bermuda.",
+        "ingredients": [
+            {"name": "Dunkler Rum"},
+            {"name": "Ginger Beer"},
+            {"name": "Limettensaft"}
+        ],
+        "alcohol_pc": 13,
+        "category": "Highball",
+        "flavor_profile": [
+            "würzig",
+            "kräftig",
+            "frisch"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 29,
+        "name": "Tom Collins",
+        "description": "A timeless gin highball dating back to the 19th century, celebrated for its crisp citrus profile.",
+        "ingredients": [
+            {"name": "Gin"},
+            {"name": "Zitronensaft"},
+            {"name": "Zuckersirup"},
+            {"name": "Sodawasser"}
+        ],
+        "alcohol_pc": 10,
+        "category": "Highball",
+        "flavor_profile": [
+            "frisch",
+            "leicht",
+            "sauer"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 30,
+        "name": "Southside Fizz",
+        "description": "A refreshing variation of the Southside with soda water, combining gin, mint and citrus.",
+        "ingredients": [
+            {"name": "Gin"},
+            {"name": "Limettensaft"},
+            {"name": "Zuckersirup"},
+            {"name": "Minze"},
+            {"name": "Sodawasser"}
+        ],
+        "alcohol_pc": 9,
+        "category": "Highball",
+        "flavor_profile": [
+            "frisch",
+            "leicht",
+            "sauer"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 31,
+        "name": "Sea Breeze",
+        "description": "A light vodka cocktail that became especially popular during the 1980s cocktail revival. The original recepy with this name from the 1920s used gin and grenadine.",
+        "ingredients": [
+            {"name": "Vodka"},
+            {"name": "Cranberrysaft"},
+            {"name": "Grapefruitsaft"}
+        ],
+        "alcohol_pc": 7,
+        "category": "Highball",
+        "flavor_profile": [
+            "fruchtig",
+            "leicht",
+            "frisch"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 32,
+        "name": "Greyhound",
+        "description": "A minimalist classic consisting only of vodka or gin and fresh grapefruit juice.",
+        "ingredients": [
+            {"name": "Vodka"},
+            {"name": "Grapefruitsaft"}
+        ],
+        "alcohol_pc": 10,
+        "category": "Highball",
+        "flavor_profile": [
+            "herb",
+            "frisch",
+            "leicht"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 33,
+        "name": "Cranberry Cooler",
+        "description": "A fruity long drink featuring cranberry juice with bright citrus notes.",
+        "ingredients": [
+            {"name": "Vodka"},
+            {"name": "Amaretto"},
+            {"name": "Orangensaft"},
+            {"name": "Cranberrysaft"}
+        ],
+        "alcohol_pc": 9,
+        "category": "Highball",
+        "flavor_profile": [
+            "fruchtig",
+            "frisch",
+            "nussig"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 34,
+        "name": "Campari Bloom",
+        "description": "A modern Campari cocktail highlighting sweet floral aromas alongside the liqueur's signature bitterness.",
+        "ingredients": [
+            {"name": "Campari"},
+            {"name": "St-Germain"},
+            {"name": "Zitronensaft"},
+            {"name": "Sodawasser"}
+        ],
+        "alcohol_pc": 6,
+        "category": "Highball",
+        "flavor_profile": [
+            "bitter",
+            "floral",
+            "frisch"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 35,
+        "name": "Reposado Spritz",
+        "description": "A contemporary spritz combining the oak notes of reposado tequila with typical elements of a spritz.",
+        "ingredients": [
+            {"name": "Tequila Reposado"},
+            {"name": "Limettensaft"},
+            {"name": "Honigsirup"},
+            {"name": "Zitronensaft"},
+            {"name": "Sodawasser"}
+        ],
+        "alcohol_pc": 10,
+        "category": "Highball",
+        "flavor_profile": [
+            "frisch",
+            "leicht",
+            "sauer"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 36,
+        "name": "Jasmine's Cooler",
+        "description": "A floral and citrus-forward cooler inspired by modern gin cocktails.",
+        "ingredients": [
+            {"name": "Gin"},
+            {"name": "Campari"},
+            {"name": "Triple Sec"},
+            {"name": "Zitronensaft"},
+            {"name": "Sodawasser"}
+        ],
+        "alcohol_pc": 11,
+        "category": "Highball",
+        "flavor_profile": [
+            "floral",
+            "frisch",
+            "leicht"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 37,
+        "name": "Italian Buck",
+        "description": "A refreshing buck combining Italian bitter liqueur with spicy ginger beer.",
+        "ingredients": [
+            {"name": "Cynar"},
+            {"name": "Amaro Montenegro"},
+            {"name": "Limettensaft"},
+            {"name": "Ginger Beer"}
+        ],
+        "alcohol_pc": 7,
+        "category": "Highball",
+        "flavor_profile": [
+            "bitter",
+            "würzig",
+            "frisch"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 38,
+        "name": "Stay Up Late",
+        "description": "As described in the 1946, Stork Club Bar Book.",
+        "ingredients": [
+            {"name": "Gin"},
+            {"name": "Cognac"},
+            {"name": "Zitronensaft"},
+            {"name": "Zuckersirup"},
+            {"name": "Sodawasser"}
+        ],
+        "alcohol_pc": 9,
+        "category": "Highball",
+        "flavor_profile": [
+            "frisch",
+            "sauer"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 39,
+        "name": "Silver Fox",
+        "description": "",
+        "ingredients": [
+            {"name": "Gin"},
+            {"name": "Amaretto"},
+            {"name": "Orgeat-Sirup"},
+            {"name": "Zitronensaft"},
+            {"name": "Eiweiß"},
+            {"name": "Sodawasser"}
+        ],
+        "alcohol_pc": 9,
+        "category": "Highball",
+        "flavor_profile": [
+            "trocken",
+            "frisch"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 40,
+        "name": "Espresso Martini",
+        "description": "Invented by Dick Bradsell in London after a customer requested a drink that would 'wake me up and then mess me up'.",
+        "ingredients": [
+            {"name": "Vodka"},
+            {"name": "Kaffeelikör"},
+            {"name": "Espresso"},
+            {"name": "Zuckersirup"}
+        ],
+        "alcohol_pc": 14,
+        "category": "Fancy Stuff",
+        "flavor_profile": [
+            "süß",
+            "cremig",
+            "vanillig"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 41,
+        "name": "Kir Royale",
+        "description": "A French apéritif made with crème de cassis and Champagne, often served for celebrations.",
+        "ingredients": [
+            {"name": "Champagner"},
+            {"name": "Crème de Cassis"}
+        ],
+        "alcohol_pc": 13,
+        "category": "Fancy Stuff",
+        "flavor_profile": [
+            "beerig",
+            "süß"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 42,
+        "name": "French 75",
+        "description": "Named after the powerful French 75 mm field gun, this cocktail is deceptively light but packs a punch.",
+        "ingredients": [
+            {"name": "Gin"},
+            {"name": "Champagner"},
+            {"name": "Zitronensaft"},
+            {"name": "Zuckersirup"}
+        ],
+        "alcohol_pc": 11,
+        "category": "Fancy Stuff",
+        "flavor_profile": [
+            "frisch",
+            "sauer",
+            "leicht"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 43,
+        "name": "French 95",
+        "description": "A bourbon-based twist on the French 75 with richer whiskey notes balanced by sparkling wine.",
+        "ingredients": [
+            {"name": "Bourbon Whiskey"},
+            {"name": "Champagner"},
+            {"name": "Orangensaft"},
+            {"name": "Zitronensaft"},
+            {"name": "Zuckersirup"}
+        ],
+        "alcohol_pc": 8,
+        "category": "Fancy Stuff",
+        "flavor_profile": [
+            "kräftig",
+            "frisch",
+            "sauer"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 44,
+        "name": "Barbotage",
+        "description": "A luxurious Champagne cocktail combining Cognac, Grand Marnier and sparkling wine.",
+        "ingredients": [
+            {"name": "Cognac"},
+            {"name": "Grand Marnier"},
+            {"name": "Champagner"}
+        ],
+        "alcohol_pc": 6,
+        "category": "Fancy Stuff",
+        "flavor_profile": [
+            "fruchtig",
+            "kräftig",
+            "süß"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 45,
+        "name": "Shaddock's Fizz",
+        "description": "A refreshing fizz highlighting the pleasantly bitter notes of grapefruit.",
+        "ingredients": [
+            {"name": "Aperol"},
+            {"name": "Grapefruitsaft"},
+            {"name": "St-Germain"},
+            {"name": "Champagner"}
+        ],
+        "alcohol_pc": 8,
+        "category": "Fancy Stuff",
+        "flavor_profile": [
+            "frisch",
+            "herb",
+            "leicht"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 46,
+        "name": "Aperol Spritz",
+        "description": "The iconic Venetian aperitif that has become one of the world's most popular summer cocktails.",
+        "ingredients": [
+            {"name": "Aperol"},
+            {"name": "Prosecco"},
+            {"name": "Sodawasser"}
+        ],
+        "alcohol_pc": 7,
+        "category": "Fancy Stuff",
+        "flavor_profile": [
+            "bitter",
+            "frisch",
+            "leicht"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 47,
+        "name": "Pornstar Martini",
+        "description": "Our version uses a slightly different mix of ingredients than the original created by Douglas Ankrah in London born out of necessity. 'Tastes the same though.' - hopeful bartender",
+        "ingredients": [
+            {"name": "Vodka"},
+            {"name": "Passionsfruchtsirup"},
+            {"name": "Licor 43"},
+            {"name": "Limettensaft"},
+            {"name": "Prosecco"}
+        ],
+        "alcohol_pc": 21,
+        "category": "Fancy Stuff",
+        "flavor_profile": [
+            "tropisch",
+            "fruchtig",
+            "süß"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 48,
+        "name": "Gold Rush",
+        "description": "Created by T.J. Siegal at Milk & Honey in New York, the Gold Rush modernizes the Whiskey Sour by replacing simple syrup with honey syrup.",
+        "ingredients": [
+            {"name": "Bourbon Whiskey"},
+            {"name": "Zitronensaft"},
+            {"name": "Honigsirup"}
+        ],
+        "alcohol_pc": 15,
+        "category": "Whiskey Cocktails",
+        "flavor_profile": [
+            "süß",
+            "sauer",
+            "kräftig"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 49,
+        "name": "Penicillin",
+        "description": "Created by Sam Ross in 2005, this modern classic combines blended Scotch with a smoky Islay float.",
+        "ingredients": [
+            {"name": "Blended Scotch Whisky"},
+            {"name": "Peated Scotch Whisky"},
+            {"name": "Zitronensaft"},
+            {"name": "Honigsirup"},
+            {"name": "Ingwersirup"}
+        ],
+        "alcohol_pc": 16,
+        "category": "Whiskey Cocktails",
+        "flavor_profile": [
+            "rauchig",
+            "würzig",
+            "kräftig"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 50,
+        "name": "Paper Plane",
+        "description": "Created by Sam Ross in 2008, this equal-parts cocktail balances bourbon with Aperol and Amaro Nonino. Named after the M.I.A. Track",
+        "ingredients": [
+            {"name": "Bourbon Whiskey"},
+            {"name": "Aperol"},
+            {"name": "Amaro Nonino"},
+            {"name": "Zitronensaft"}
+        ],
+        "alcohol_pc": 14,
+        "category": "Whiskey Cocktails",
+        "flavor_profile": [
+            "bitter",
+            "fruchtig",
+            "sauer"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 51,
+        "name": "Smoke and Mirrors",
+        "description": "A modern whiskey cocktail highlighting smoky Scotch with bittersweet herbal liqueurs.",
+        "ingredients": [
+            {"name": "Blended Scotch Whisky"},
+            {"name": "Peated Scotch Whisky"},
+            {"name": "Limettensaft"},
+            {"name": "Zuckersirup"},
+            {"name": "Minze"},
+            {"name": "Absinthe"}
+        ],
+        "alcohol_pc": 14,
+        "category": "Whiskey Cocktails",
+        "flavor_profile": [
+            "rauchig",
+            "schwer",
+            "kräftig"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 52,
+        "name": "Vieux Carré",
+        "description": "Created at the Hotel Monteleone in New Orleans, the cocktail is named after the city's historic French Quarter.",
+        "ingredients": [
+            {"name": "Rye Whiskey"},
+            {"name": "Cognac"},
+            {"name": "Süßer Wermut"},
+            {"name": "Bénédictine"},
+            {"name": "Peychaud's Bitters"},
+            {"name": "Angostura Bitters"}
+        ],
+        "alcohol_pc": 23,
+        "category": "Whiskey Cocktails",
+        "flavor_profile": [
+            "würzig",
+            "kräftig",
+            "süß"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 53,
+        "name": "Port Light",
+        "description": "A tropical Bourbon Cocktail, created by Trader Vic.",
+        "ingredients": [
+            {"name": "Bourbon Whiskey"},
+            {"name": "Zitronensaft"},
+            {"name": "Passionsfruchtsirup"},
+            {"name": "Honigsirup"},
+            {"name": "Eiweiß"}
+        ],
+        "alcohol_pc": 8,
+        "category": "Whiskey Cocktails",
+        "flavor_profile": [
+            "tropisch",
+            "fruchtig",
+            "süß"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 54,
+        "name": "Sazerac",
+        "description": "Often regarded as America's oldest cocktail, originating in 19th-century New Orleans.",
+        "ingredients": [
+            {"name": "Rye Whiskey"},
+            {"name": "Peychaud's Bitters"},
+            {"name": "Würfelzucker"},
+            {"name": "Absinth"}
+        ],
+        "alcohol_pc": 27,
+        "category": "Whiskey Cocktails",
+        "flavor_profile": [
+            "würzig",
+            "kräftig",
+            "trocken"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 55,
+        "name": "Preakness",
+        "description": "Named for the famous Preakness Stakes, the second leg of the Triple Crown horserace",
+        "ingredients": [
+            {"name": "Bourbon Whiskey"},
+            {"name": "Bénédictine"},
+            {"name": "Süßer Wermut"},
+            {"name": "Angostura Bitters"}
+        ],
+        "alcohol_pc": 23,
+        "category": "Whiskey Cocktails",
+        "flavor_profile": [
+            "würzig",
+            "kräftig",
+            "süß"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 56,
+        "name": "St. George and the Dragon",
+        "description": "Crafted in 2014 by mixologist Al Sotack.",
+        "ingredients": [
+            {"name": "Irish Whiskey"},
+            {"name": "Punt E Mes"},
+            {"name": "Peated Scotch Whisky"},
+            {"name": "Bénédictine"},
+            {"name": "Absinthe"}
+        ],
+        "alcohol_pc": 24,
+        "category": "Whiskey Cocktails",
+        "flavor_profile": [
+            "würzig",
+            "kräfrig",
+            "herb"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 57,
+        "name": "Godfather",
+        "description": "A simple yet elegant two-ingredient cocktail combining Scotch whisky with Amaretto.",
+        "ingredients": [
+            {"name": "Scotch Whisky"},
+            {"name": "Amaretto"}
+        ],
+        "alcohol_pc": 27,
+        "category": "Whiskey Cocktails",
+        "flavor_profile": [
+            "nussig",
+            "süß",
+            "kräftig"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 58,
+        "name": "Army & Navy",
+        "description": "A Prohibition-era classic.",
+        "ingredients": [
+            {"name": "Gin"},
+            {"name": "Zitronensaft"},
+            {"name": "Orgeat-Sirup"},
+            {"name": "Angostura Bitters"}
+        ],
+        "alcohol_pc": 15,
+        "category": "Gin Cocktails",
+        "flavor_profile": [
+            "nussig",
+            "sauer",
+            "frisch"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 59,
+        "name": "Gimlet",
+        "description": "Originally created as a cure against scurvy for British sailors, today one of the purest gin classics.",
+        "ingredients": [
+            {"name": "Gin"},
+            {"name": "Limettensaft"},
+            {"name": "Zuckersirup"}
+        ],
+        "alcohol_pc": "x",
+        "category": "Gin Cocktails",
+        "flavor_profile": [
+            "frisch",
+            "sauer",
+            "leicht"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 60,
+        "name": "Fitzgerald",
+        "description": "Created by Dale DeGroff, essentially a Gin Sour elevated with Angostura bitters.",
+        "ingredients": [
+            {"name": "Gin"},
+            {"name": "Zitronensaft"},
+            {"name": "Zuckersirup"},
+            {"name": "Angostura Bitters"}
+        ],
+        "alcohol_pc": "x",
+        "category": "Gin Cocktails",
+        "flavor_profile": [
+            "sauer",
+            "frisch",
+            "leicht"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 61,
+        "name": "Vieux Mot",
+        "description": "A modern gin cocktail balancing herbal liqueurs with fresh citrus.",
+        "ingredients": [
+            {"name": "Gin"},
+            {"name": "Grüne Chartreuse"},
+            {"name": "Zitronensaft"},
+            {"name": "Holunderblütenlikör"}
+        ],
+        "alcohol_pc": "x",
+        "category": "Gin Cocktails",
+        "flavor_profile": [
+            "herb",
+            "floral",
+            "frisch"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 62,
+        "name": "Sunflower",
+        "description": "A modern equal-parts cocktail inspired by the Last Word, featuring orange and elderflower notes.",
+        "ingredients": [
+            {"name": "Gin"},
+            {"name": "Cointreau"},
+            {"name": "Holunderblütenlikör"},
+            {"name": "Zitronensaft"},
+            {"name": "Absinth"}
+        ],
+        "alcohol_pc": "x",
+        "category": "Gin Cocktails",
+        "flavor_profile": [
+            "floral",
+            "frisch",
+            "sauer"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 63,
+        "name": "L'Orange et Crème",
+        "description": "A creamy gin cocktail highlighting bright orange flavors.",
+        "ingredients": [
+            {"name": "Gin"},
+            {"name": "Orangenlikör"},
+            {"name": "Sahne"},
+            {"name": "Orangensaft"}
+        ],
+        "alcohol_pc": "x",
+        "category": "Gin Cocktails",
+        "flavor_profile": [
+            "cremig",
+            "fruchtig",
+            "süß"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 64,
+        "name": "Davy Jones",
+        "description": "A contemporary gin cocktail with maritime-inspired herbal and citrus notes.",
+        "ingredients": [
+            {"name": "Gin"},
+            {"name": "Limettensaft"},
+            {"name": "Falernum"},
+            {"name": "Angostura Bitters"}
+        ],
+        "alcohol_pc": "x",
+        "category": "Gin Cocktails",
+        "flavor_profile": [
+            "würzig",
+            "frisch",
+            "sauer"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 65,
+        "name": "Velo",
+        "description": "A light and refreshing modern gin cocktail with crisp citrus notes.",
+        "ingredients": [
+            {"name": "Gin"},
+            {"name": "Grapefruitsaft"},
+            {"name": "Limettensaft"},
+            {"name": "Sodawasser"}
+        ],
+        "alcohol_pc": "x",
+        "category": "Gin Cocktails",
+        "flavor_profile": [
+            "frisch",
+            "leicht",
+            "herb"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 66,
+        "name": "Bee's Knees",
+        "description": "A Prohibition-era cocktail using honey to mask the harshness of homemade gin.",
+        "ingredients": [
+            {"name": "Gin"},
+            {"name": "Zitronensaft"},
+            {"name": "Honigsirup"}
+        ],
+        "alcohol_pc": "x",
+        "category": "Gin Cocktails",
+        "flavor_profile": [
+            "süß",
+            "frisch",
+            "sauer"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 67,
+        "name": "The Business",
+        "description": "A close relative of the Bee's Knees with a richer honey profile.",
+        "ingredients": [
+            {"name": "Gin"},
+            {"name": "Zitronensaft"},
+            {"name": "Honigsirup"}
+        ],
+        "alcohol_pc": "x",
+        "category": "Gin Cocktails",
+        "flavor_profile": [
+            "süß",
+            "frisch",
+            "leicht"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 68,
+        "name": "Paris Is Burning",
+        "description": "A contemporary cocktail combining gin with floral French aperitif flavors.",
+        "ingredients": [
+            {"name": "Gin"},
+            {"name": "Lillet Blanc"},
+            {"name": "Holunderblütenlikör"},
+            {"name": "Zitronensaft"}
+        ],
+        "alcohol_pc": "x",
+        "category": "Gin Cocktails",
+        "flavor_profile": [
+            "floral",
+            "frisch",
+            "leicht"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 69,
+        "name": "Tritter Collins",
+        "description": "A modern Collins variation with bright citrus and sparkling freshness.",
+        "ingredients": [
+            {"name": "Gin"},
+            {"name": "Zitronensaft"},
+            {"name": "Zuckersirup"},
+            {"name": "Sodawasser"}
+        ],
+        "alcohol_pc": "x",
+        "category": "Gin Cocktails",
+        "flavor_profile": [
+            "frisch",
+            "leicht",
+            "sauer"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 70,
+        "name": "Celine Fizz",
+        "description": "A delicate fizz featuring citrus and floral botanicals.",
+        "ingredients": [
+            {"name": "Gin"},
+            {"name": "Zitronensaft"},
+            {"name": "Holunderblütenlikör"},
+            {"name": "Sodawasser"}
+        ],
+        "alcohol_pc": "x",
+        "category": "Gin Cocktails",
+        "flavor_profile": [
+            "floral",
+            "frisch",
+            "leicht"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 71,
+        "name": "Too Soon?",
+        "description": "A modern gin sour balancing herbal bitterness with citrus freshness.",
+        "ingredients": [
+            {"name": "Gin"},
+            {"name": "Amaro"},
+            {"name": "Zitronensaft"},
+            {"name": "Zuckersirup"}
+        ],
+        "alcohol_pc": "x",
+        "category": "Gin Cocktails",
+        "flavor_profile": [
+            "bitter",
+            "sauer",
+            "frisch"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 72,
+        "name": "Max's Mistake",
+        "description": "A playful modern gin cocktail where an accidental combination became a favorite.",
+        "ingredients": [
+            {"name": "Gin"},
+            {"name": "Limettensaft"},
+            {"name": "Holunderblütenlikör"},
+            {"name": "Grapefruitsaft"}
+        ],
+        "alcohol_pc": "x",
+        "category": "Gin Cocktails",
+        "flavor_profile": [
+            "fruchtig",
+            "frisch",
+            "floral"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 73,
+        "name": "Don't Give Up the Ship",
+        "description": "Named after the famous naval motto, this gin cocktail combines citrus with aromatic bitters.",
+        "ingredients": [
+            {"name": "Gin"},
+            {"name": "Zitronensaft"},
+            {"name": "Orangenlikör"},
+            {"name": "Angostura Bitters"}
+        ],
+        "alcohol_pc": "x",
+        "category": "Gin Cocktails",
+        "flavor_profile": [
+            "frisch",
+            "würzig",
+            "sauer"
+        ],
+        "image_url": "x"
+    },
+    {
+        "id": 74,
+        "name": "Aviation",
+        "description": "Created in the early 1900s, the Aviation owes its distinctive floral character to crème de violette.",
+        "ingredients": [
+            {"name": "Gin"},
+            {"name": "Maraschinolikör"},
+            {"name": "Crème de Violette"},
+            {"name": "Zitronensaft"}
+        ],
+        "alcohol_pc": "x",
+        "category": "Gin Cocktails",
+        "flavor_profile": [
+            "floral",
+            "fruchtig",
+            "sauer"
+        ],
+        "image_url": "x"
     }
+
 ]
