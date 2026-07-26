@@ -305,13 +305,17 @@ controls
 // Transformation Variablen
 // ===============================
 
-let transforming=false;
+let transforming = false;
 
-let transformProgress=0;
+let transformProgress = 0;
 
-let startPositions=[];
+let startPositions = [];
 
-let targetPositions=[];
+let targetPositions = [];
+
+let transformStartTime = 0;
+
+const transformDuration = 1500; // Millisekunden
 
 
 
@@ -684,11 +688,11 @@ obj.position.clone()
 });
 
 
+transformProgress = 0;
 
-transformProgress=0;
+transformStartTime = performance.now();
 
-transforming=true;
-
+transforming = true;
 
 
 }
@@ -724,17 +728,40 @@ controls.update();
 if(transforming){
 
 
-transformProgress += 0.015;
+const elapsed =
+performance.now()
+-
+transformStartTime;
 
 
 
-const t =
-transformProgress;
+transformProgress =
+Math.min(
+elapsed / transformDuration,
+1
+);
+
+
+
+// kubische Ease-In-Out Funktion
 
 const eased =
-3 * t * t
--
-2 * t * t * t;
+transformProgress < 0.5
+
+?
+
+4 *
+transformProgress *
+transformProgress *
+transformProgress
+
+:
+
+1 -
+Math.pow(
+-2 * transformProgress + 2,
+3
+) / 2;
 
 
 
@@ -763,7 +790,7 @@ eased
 
 
 
-if(transformProgress>=1){
+if(transformProgress >= 1){
 
 transforming=false;
 
@@ -771,7 +798,6 @@ transforming=false;
 
 
 }
-
 
 
 // -------------------------------
