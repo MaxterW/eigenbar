@@ -724,16 +724,17 @@ controls.update();
 if(transforming){
 
 
-transformProgress += 0.02;
+transformProgress += 0.015;
 
 
 
 const t =
-THREE.MathUtils.smoothstep(
-transformProgress,
-0,
-1
-);
+transformProgress;
+
+const eased =
+3 * t * t
+-
+2 * t * t * t;
 
 
 
@@ -753,7 +754,7 @@ startPositions[i].position,
 
 targetPositions[i].position,
 
-t
+eased
 
 );
 
