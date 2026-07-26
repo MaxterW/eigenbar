@@ -312,6 +312,7 @@ camera,
 renderer.domElement
 );
 
+console.log("Controls:", controls);
 
 controls.enableDamping=true;
 
