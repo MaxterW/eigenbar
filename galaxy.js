@@ -5,7 +5,6 @@ console.log("GALAXY JS GELADEN");
 // Cocktail Daten
 // ===============================
 
-
 const cocktails = [
 
 {
@@ -182,38 +181,32 @@ spirit:.3
 
 
 
-
 // ===============================
-// A-Raum Projektion
+// Projektion A-Raum
 // ===============================
-
 
 function projectA(c){
 
 const f=c.features;
 
 
-// x = Stärke / Alkohol
-let x = f.strong;
-
-
-// y = frisch ↔ schwer
-let y =
-(f.sour + f.fruity)
--
-(f.creamy + f.smoky + f.strong);
-
-
-// z = fruchtig ↔ spirit forward
-let z =
-f.fruity - f.spirit;
-
-
 return {
 
-x:x*5,
-y:y*5,
-z:z*5
+x:f.strong*5,
+
+y:
+(
+f.sour+
+f.fruity-
+f.creamy-
+f.smoky
+)*5,
+
+z:
+(
+f.fruity-
+f.spirit
+)*5
 
 };
 
@@ -224,7 +217,6 @@ z:z*5
 // ===============================
 // Three.js Setup
 // ===============================
-
 
 const scene =
 new THREE.Scene();
@@ -263,9 +255,8 @@ renderer.domElement
 
 
 // ===============================
-// CSS Labels
+// Labels
 // ===============================
-
 
 const labelRenderer =
 new THREE.CSS2DRenderer();
@@ -293,7 +284,6 @@ labelRenderer.domElement
 // Controls
 // ===============================
 
-
 const controls =
 new THREE.OrbitControls(
 camera,
@@ -303,14 +293,44 @@ renderer.domElement
 
 controls.enableDamping=true;
 
-console.log("Controls:", controls);
+
+console.log(
+"Controls:",
+controls
+);
 
 
 
 // ===============================
-// Koordinatensystem
+// Transformation Variablen
 // ===============================
 
+let transforming=false;
+
+let transformProgress=0;
+
+let startPositions=[];
+
+let targetPositions=[];
+
+
+
+// ===============================
+// Raycaster
+// ===============================
+
+const raycaster =
+new THREE.Raycaster();
+
+
+const mouse =
+new THREE.Vector2();
+
+
+
+// ===============================
+// Koordinatenachsen
+// ===============================
 
 const axisLength=8;
 
@@ -360,8 +380,6 @@ new THREE.Vector3(0,0,axisLength),
 
 
 
-// Ursprung
-
 const origin =
 new THREE.Mesh(
 
@@ -380,10 +398,10 @@ color:0xffffff
 
 scene.add(origin);
 
+// ===============================
+// Labels
+// ===============================
 
-
-
-// Achsenlabels
 
 function createLabel(text,position){
 
@@ -391,9 +409,11 @@ function createLabel(text,position){
 const div =
 document.createElement("div");
 
+
 div.className="label";
 
 div.textContent=text;
+
 
 
 const label =
@@ -405,41 +425,46 @@ label.position.copy(position);
 
 scene.add(label);
 
+
 }
+
 
 
 createLabel(
 "X",
-new THREE.Vector3(axisLength+.5,0,0)
+new THREE.Vector3(axisLength+0.5,0,0)
 );
 
 
 createLabel(
 "Y",
-new THREE.Vector3(0,axisLength+.5,0)
+new THREE.Vector3(0,axisLength+0.5,0)
 );
 
 
 createLabel(
 "Z",
-new THREE.Vector3(0,0,axisLength+.5)
+new THREE.Vector3(0,0,axisLength+0.5)
 );
 
 
 
 
-
 // ===============================
-// Farben
+// Farben nach Spirituose
 // ===============================
 
 
 const colors={
 
 Gin:0x55ff55,
+
 Rum:0xffff55,
+
 Whiskey:0xff5555,
+
 Vodka:0x5555ff,
+
 Aperol:0xff8800
 
 };
@@ -448,7 +473,7 @@ Aperol:0xff8800
 
 
 // ===============================
-// Cocktails erstellen
+// Cocktails erzeugen
 // ===============================
 
 
@@ -475,7 +500,9 @@ new THREE.MeshBasicMaterial({
 color:
 colors[c.spirit] || 0xffffff,
 
-transparent:true
+transparent:true,
+
+opacity:1
 
 });
 
@@ -497,13 +524,13 @@ pos.z
 
 
 
-scene.add(sphere);
-
-
-
-// Speichern für Animation
-
 sphere.userData.isCocktail=true;
+
+sphere.userData.cocktail=c;
+
+
+
+scene.add(sphere);
 
 
 
@@ -515,7 +542,9 @@ document.createElement("div");
 
 div.className="label";
 
+
 div.textContent=c.name;
+
 
 
 const label =
@@ -530,6 +559,140 @@ sphere.add(label);
 
 
 });
+
+
+
+
+// ===============================
+// Klickerkennung
+// ===============================
+
+
+renderer.domElement.addEventListener(
+"click",
+(event)=>{
+
+
+mouse.x =
+(event.clientX /
+window.innerWidth)*2-1;
+
+
+mouse.y =
+-(event.clientY /
+window.innerHeight)*2+1;
+
+
+
+raycaster.setFromCamera(
+mouse,
+camera
+);
+
+
+
+const intersects =
+raycaster.intersectObjects(
+scene.children
+);
+
+
+
+for(let hit of intersects){
+
+
+if(hit.object.userData.isCocktail){
+
+
+transformToCocktail(
+hit.object
+);
+
+
+break;
+
+}
+
+
+}
+
+
+});
+
+
+
+
+
+// ===============================
+// Transformation
+// ausgewählter Cocktail -> Ursprung
+// ===============================
+
+
+function transformToCocktail(selected){
+
+
+console.log(
+"Ausgewählt:",
+selected.userData.cocktail.name
+);
+
+
+
+startPositions=[];
+
+targetPositions=[];
+
+
+
+const center =
+selected.position.clone();
+
+
+
+scene.children.forEach(obj=>{
+
+
+if(obj.userData.isCocktail){
+
+
+startPositions.push({
+
+object:obj,
+
+position:
+obj.position.clone()
+
+});
+
+
+
+targetPositions.push({
+
+object:obj,
+
+position:
+obj.position.clone()
+.sub(center)
+
+});
+
+
+}
+
+
+});
+
+
+
+transformProgress=0;
+
+transforming=true;
+
+
+
+}
+
 
 
 
@@ -552,12 +715,74 @@ controls.update();
 
 
 
-// Kameraabhängige Darstellung
+
+// -------------------------------
+// Raum Transformation
+// -------------------------------
+
+
+if(transforming){
+
+
+transformProgress += 0.02;
+
+
+
+const t =
+THREE.MathUtils.smoothstep(
+transformProgress,
+0,
+1
+);
+
+
+
+for(
+let i=0;
+i<startPositions.length;
+i++
+){
+
+
+startPositions[i]
+.object
+.position
+.lerpVectors(
+
+startPositions[i].position,
+
+targetPositions[i].position,
+
+t
+
+);
+
+
+}
+
+
+
+if(transformProgress>=1){
+
+transforming=false;
+
+}
+
+
+}
+
+
+
+// -------------------------------
+// Kameraabhängige Größe
+// -------------------------------
+
 
 scene.children.forEach(obj=>{
 
 
 if(obj.userData.isCocktail){
+
 
 
 const distance =
@@ -569,9 +794,13 @@ obj.position
 
 const scale =
 THREE.MathUtils.clamp(
+
 1-distance/35,
+
 0.25,
+
 1
+
 );
 
 
@@ -584,16 +813,22 @@ scale
 
 obj.material.opacity =
 THREE.MathUtils.clamp(
+
 1-distance/35,
+
 0.15,
+
 1
+
 );
+
 
 
 }
 
 
 });
+
 
 
 
@@ -610,11 +845,12 @@ camera
 );
 
 
+
 }
 
 
-
 animate();
+
 
 
 
@@ -649,6 +885,7 @@ labelRenderer.setSize(
 window.innerWidth,
 window.innerHeight
 );
+
 
 
 });
