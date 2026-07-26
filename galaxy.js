@@ -2,6 +2,7 @@
 // Test Cocktail Daten
 // ===============================
 
+console.log("GALAXY JS GELADEN");
 
 const cocktails = [
 
