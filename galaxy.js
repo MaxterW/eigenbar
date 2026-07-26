@@ -750,10 +750,8 @@ transformProgress < 0.5
 
 ?
 
-8 *
-transformProgress *
-transformProgress *
-transformProgress
+16 *
+Math.pow(transformProgress,5)
 
 :
 
