@@ -1093,7 +1093,7 @@
             {"name": "Limettensaft"},
             {"name": "Zuckersirup"}
         ],
-        "alcohol_pc": "x",
+        "alcohol_pc": 16,
         "category": "Gin Cocktails",
         "flavor_profile": [
             "frisch",
@@ -1112,7 +1112,7 @@
             {"name": "Zuckersirup"},
             {"name": "Angostura Bitters"}
         ],
-        "alcohol_pc": "x",
+        "alcohol_pc": 13,
         "category": "Gin Cocktails",
         "flavor_profile": [
             "sauer",
@@ -1127,14 +1127,14 @@
         "description": "A modern gin cocktail balancing herbal liqueurs with fresh citrus.",
         "ingredients": [
             {"name": "Gin"},
-            {"name": "Grüne Chartreuse"},
+            {"name": "St-Germain"},
             {"name": "Zitronensaft"},
-            {"name": "Holunderblütenlikör"}
+            {"name": "Zuckersirup"}
         ],
-        "alcohol_pc": "x",
+        "alcohol_pc": 15,
         "category": "Gin Cocktails",
         "flavor_profile": [
-            "herb",
+            "süß",
             "floral",
             "frisch"
         ],
@@ -1147,11 +1147,11 @@
         "ingredients": [
             {"name": "Gin"},
             {"name": "Cointreau"},
-            {"name": "Holunderblütenlikör"},
+            {"name": "St-Germain"},
             {"name": "Zitronensaft"},
             {"name": "Absinth"}
         ],
-        "alcohol_pc": "x",
+        "alcohol_pc": 17,
         "category": "Gin Cocktails",
         "flavor_profile": [
             "floral",
@@ -1166,16 +1166,19 @@
         "description": "A creamy gin cocktail highlighting bright orange flavors.",
         "ingredients": [
             {"name": "Gin"},
-            {"name": "Orangenlikör"},
-            {"name": "Sahne"},
-            {"name": "Orangensaft"}
+            {"name": "Orangensaft"},
+            {"name": "Zitronensaft"},
+            {"name": "Aperol"},
+            {"name": "Cointreau"},
+            {"name": "Licor 43"},
+            {"name": "Eiweiß"}
         ],
-        "alcohol_pc": "x",
+        "alcohol_pc": 10,
         "category": "Gin Cocktails",
         "flavor_profile": [
             "cremig",
             "fruchtig",
-            "süß"
+            "vanillig"
         ],
         "image_url": "x"
     },
@@ -1185,11 +1188,12 @@
         "description": "A contemporary gin cocktail with maritime-inspired herbal and citrus notes.",
         "ingredients": [
             {"name": "Gin"},
-            {"name": "Limettensaft"},
-            {"name": "Falernum"},
-            {"name": "Angostura Bitters"}
+            {"name": "Curaçao"},
+            {"name": "Orgeat-Sirup"},
+            {"name": "Zitronensaft"},
+            {"name": "Peychaud's Bitters"}
         ],
-        "alcohol_pc": "x",
+        "alcohol_pc": 11,
         "category": "Gin Cocktails",
         "flavor_profile": [
             "würzig",
@@ -1204,11 +1208,12 @@
         "description": "A light and refreshing modern gin cocktail with crisp citrus notes.",
         "ingredients": [
             {"name": "Gin"},
-            {"name": "Grapefruitsaft"},
+            {"name": "St-Germain"},
             {"name": "Limettensaft"},
-            {"name": "Sodawasser"}
+            {"name": "Passionsfruchtsirup"},
+            {"name": "Peychaud's Bitters"}
         ],
-        "alcohol_pc": "x",
+        "alcohol_pc": 14,
         "category": "Gin Cocktails",
         "flavor_profile": [
             "frisch",
@@ -1220,13 +1225,13 @@
     {
         "id": 66,
         "name": "Bee's Knees",
-        "description": "A Prohibition-era cocktail using honey to mask the harshness of homemade gin.",
+        "description": "A Prohibition-era cocktail using honey to mask the harshness of homemade gin. Basically just Pooh the bears version of a gin sour.",
         "ingredients": [
             {"name": "Gin"},
             {"name": "Zitronensaft"},
             {"name": "Honigsirup"}
         ],
-        "alcohol_pc": "x",
+        "alcohol_pc": 14,
         "category": "Gin Cocktails",
         "flavor_profile": [
             "süß",
@@ -1238,18 +1243,18 @@
     {
         "id": 67,
         "name": "The Business",
-        "description": "A close relative of the Bee's Knees with a richer honey profile.",
+        "description": "Variation on the classic Bee's Knees. Also a hidden play on words.",
         "ingredients": [
             {"name": "Gin"},
-            {"name": "Zitronensaft"},
+            {"name": "Limettensaft"},
             {"name": "Honigsirup"}
         ],
-        "alcohol_pc": "x",
+        "alcohol_pc": 14,
         "category": "Gin Cocktails",
         "flavor_profile": [
             "süß",
             "frisch",
-            "leicht"
+            "sauer"
         ],
         "image_url": "x"
     },
@@ -1259,16 +1264,18 @@
         "description": "A contemporary cocktail combining gin with floral French aperitif flavors.",
         "ingredients": [
             {"name": "Gin"},
-            {"name": "Lillet Blanc"},
-            {"name": "Holunderblütenlikör"},
-            {"name": "Zitronensaft"}
+            {"name": "Mezcal joven"},
+            {"name": "St-Germain"},
+            {"name": "Ananassaft"},
+            {"name": "Zitronensaft"},
+            {"name": "Zuckersirup"}
         ],
-        "alcohol_pc": "x",
+        "alcohol_pc": 14,
         "category": "Gin Cocktails",
         "flavor_profile": [
             "floral",
-            "frisch",
-            "leicht"
+            "rauchig",
+            "süß"
         ],
         "image_url": "x"
     },
@@ -1278,11 +1285,13 @@
         "description": "A modern Collins variation with bright citrus and sparkling freshness.",
         "ingredients": [
             {"name": "Gin"},
+            {"name": "Absinthe"},
             {"name": "Zitronensaft"},
+            {"name": "Grapefruitsaft"},
             {"name": "Zuckersirup"},
             {"name": "Sodawasser"}
         ],
-        "alcohol_pc": "x",
+        "alcohol_pc": 13,
         "category": "Gin Cocktails",
         "flavor_profile": [
             "frisch",
