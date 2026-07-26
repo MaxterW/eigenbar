@@ -315,7 +315,7 @@ let targetPositions = [];
 
 let transformStartTime = 0;
 
-const transformDuration = 1500; // Millisekunden
+const transformDuration = 3000; // Millisekunden
 
 
 
