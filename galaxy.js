@@ -2,8 +2,6 @@
 // Test Cocktail Daten
 // ===============================
 
-console.log("GALAXY JS GELADEN");
-
 const cocktails = [
 
 
@@ -296,6 +294,8 @@ window.innerHeight
 
 labelRenderer.domElement.style.position="absolute";
 labelRenderer.domElement.style.top="0";
+labelRenderer.domElement.style.left="0";
+labelRenderer.domElement.style.pointerEvents="none";
 
 
 document.body.appendChild(
