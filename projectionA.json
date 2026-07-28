@@ -1,0 +1,44 @@
+{
+    "x": {
+        "frisch": 1.0,
+        "fruchtig": 0.8,
+        "beerig": 0.5,
+        "leicht": 0.5,
+        "sauer": 0.3,
+
+        "kräftig": -1.0,
+        "rauchig": -0.8,
+        "schwer": -0.7,
+        "bitter": -0.5,
+        "trocken": -0.3
+    },
+
+
+    "y": {
+        "cremig": 1.0,
+        "vanillig": 0.8,
+        "schokoladig": 0.8,
+        "nussig": 0.6,
+        "schwer": 0.5,
+        "süß": 0.3,
+
+        "trocken": -1.0,
+        "bitter": -0.7,
+        "sauer": -0.5,
+        "herb": -0.5,
+        "leicht": -0.3
+    },
+
+
+    "z": {
+        "floral": 0.8,
+        "würzig": 0.8,
+        "tropisch": 0.8,
+        "rauchig": 0.7,
+        "herb": 0.4,
+        "nussig": 0.3,
+
+        "leicht": -0.6,
+        "frisch": -0.3
+    }
+}

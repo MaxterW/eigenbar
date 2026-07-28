@@ -1,235 +1,754 @@
-console.log("GALAXY JS GELADEN");
+// ============================================================
+// Cocktail PCA Visualization - Refactored Version
+// Teil 1/3
+// ============================================================
 
 
-// ===============================
-// Cocktail Daten
-// ===============================
+// ============================================================
+// DATEN UND INITIALITSATION
+// ============================================================
 
-const cocktails = [
+let cocktails = [];
 
-{
-name:"Mojito",
-spirit:"Rum",
-features:{
-sweet:.6,
-sour:.8,
-bitter:0,
-fruity:.7,
-floral:.2,
-smoky:0,
-herbal:.8,
-creamy:0,
-strong:.2,
-spirit:.1
-}
-},
-
-{
-name:"Old Fashioned",
-spirit:"Whiskey",
-features:{
-sweet:.5,
-sour:0,
-bitter:.6,
-fruity:0,
-floral:0,
-smoky:.3,
-herbal:.2,
-creamy:0,
-strong:.8,
-spirit:.8
-}
-},
-
-{
-name:"Negroni",
-spirit:"Gin",
-features:{
-sweet:.3,
-sour:.1,
-bitter:.9,
-fruity:.2,
-floral:.2,
-smoky:0,
-herbal:.7,
-creamy:0,
-strong:.7,
-spirit:.8
-}
-},
-
-{
-name:"Daiquiri",
-spirit:"Rum",
-features:{
-sweet:.5,
-sour:.8,
-bitter:0,
-fruity:.5,
-floral:.1,
-smoky:0,
-herbal:0,
-creamy:0,
-strong:.4,
-spirit:.4
-}
-},
-
-{
-name:"Martini",
-spirit:"Gin",
-features:{
-sweet:.1,
-sour:0,
-bitter:.3,
-fruity:0,
-floral:.5,
-smoky:0,
-herbal:.4,
-creamy:0,
-strong:.8,
-spirit:1
-}
-},
-
-{
-name:"Moscow Mule",
-spirit:"Vodka",
-features:{
-sweet:.4,
-sour:.7,
-bitter:0,
-fruity:.3,
-floral:0,
-smoky:0,
-herbal:0,
-creamy:0,
-strong:.3,
-spirit:.2
-}
-},
-
-{
-name:"Manhattan",
-spirit:"Whiskey",
-features:{
-sweet:.5,
-sour:0,
-bitter:.5,
-fruity:.1,
-floral:.2,
-smoky:.2,
-herbal:.5,
-creamy:0,
-strong:.8,
-spirit:.8
-}
-},
-
-{
-name:"Aperol Spritz",
-spirit:"Aperol",
-features:{
-sweet:.6,
-sour:.4,
-bitter:.5,
-fruity:.6,
-floral:.3,
-smoky:0,
-herbal:.2,
-creamy:0,
-strong:.2,
-spirit:.2
-}
-},
-
-{
-name:"Penicillin",
-spirit:"Whiskey",
-features:{
-sweet:.5,
-sour:.5,
-bitter:.2,
-fruity:.4,
-floral:0,
-smoky:.9,
-herbal:.2,
-creamy:0,
-strong:.7,
-spirit:.7
-}
-},
-
-{
-name:"Cosmopolitan",
-spirit:"Vodka",
-features:{
-sweet:.6,
-sour:.7,
-bitter:0,
-fruity:.8,
-floral:.2,
-smoky:0,
-herbal:0,
-creamy:0,
-strong:.4,
-spirit:.3
-}
-}
-
+let featureNames = [
+    "bitter",
+    "süß",
+    "frisch",
+    "fruchtig",
+    "trocken",
+    "schwer",
+    "floral",
+    "rauchig",
+    "herb",
+    "tropisch",
+    "würzig",
+    "beerig",
+    "cremig",
+    "leicht",
+    "vanillig",
+    "nussig",
+    "schokoladig",
+    "kräftig",
+    "sauer",
+    "spicy"
 ];
 
 
-
-// ===============================
-// Projektion A-Raum
-// ===============================
-
-function projectA(c){
-
-const f=c.features;
+let projectionA;
 
 
-return {
+async function loadData(){
 
-x:f.strong*5,
+    const cocktailResponse =
+        await fetch(
+            "./data/cocktails_test.json"
+        );
 
-y:
-(
-f.sour+
-f.fruity-
-f.creamy-
-f.smoky
-)*5,
+    cocktails =
+        await cocktailResponse.json();
 
-z:
-(
-f.fruity-
-f.spirit
-)*5
 
-};
+
+    const projectionResponse =
+        await fetch(
+            "./data/projectionA.json"
+        );
+
+    projectionA =
+        await projectionResponse.json();
+
+
+
+    init();
+
+}
+
+function init(){
+
+
+    calculateFeatureMeans();
+
+
+    createCocktailObjects();
+
+
+    animate();
+
+
+}
+
+
+// ============================================================
+// Feature Mittelwerte
+// ============================================================
+
+function calculateFeatureMeans(){
+
+    featureMeans = {};
+
+    featureNames.forEach(key=>{
+
+        let sum = 0;
+
+        cocktails.forEach(c=>{
+
+            sum += c.features[key] || 0;
+
+        });
+
+
+        featureMeans[key] =
+            sum / cocktails.length;
+
+    });
 
 }
 
 
 
-// ===============================
-// Three.js Setup
-// ===============================
+// ============================================================
+// PCA
+// ============================================================
+
+
+function cocktailToVector(cocktail){
+
+    return featureNames.map(
+        key => cocktail.features[key] || 0
+    );
+
+}
+
+
+
+function PCA(dataVectors){
+
+
+    let dimensions = dataVectors[0].length;
+    let mean = new Array(dimensions).fill(0);
+
+
+    dataVectors.forEach(v=>{
+
+        for(let i=0;i<dimensions;i++){
+
+            mean[i]+=v[i] / v.length;
+
+        }
+
+    });
+
+
+
+    let C = Array.from(
+            {length:dimensions},
+            ()=>new Array(dimensions).fill(0)
+        );
+
+
+
+    dataVectors.forEach(v=>{
+
+
+        let centered =
+            v.map(
+                (x,i)=>x-mean[i]
+            );
+
+
+        for(let i=0;i<dimensions;i++){
+
+            for(let j=0;j<dimensions;j++){
+
+                C[i][j]+=
+                    centered[i]*
+                    centered[j];
+
+            }
+        }
+
+    });
+
+
+
+    for(let i=0;i<dimensions;i++){
+
+        for(let j=0;j<dimensions;j++){
+
+            C[i][j]/=
+                dataVectors.length-1;
+
+        }
+
+    }
+
+
+    return getEigenvectors(C);
+
+}
+
+
+
+
+function getEigenvectors(A){
+
+
+    let n=A.length;
+
+    let vectors=[];
+
+
+    let M =
+        A.map(
+            row=>row.slice()
+        );
+
+
+
+    for(let k=0;k<3;k++){
+
+
+        let v = Array.from({length:n}, ()=>Math.random());
+
+
+        for(let iteration=0;iteration<100;iteration++){
+
+            let Av = new Array(n).fill(0);
+
+            for(let i=0;i<n;i++){
+
+                for(let j=0;j<n;j++){
+
+                    Av[i]+=M[i][j]*v[j];
+
+                }
+
+            }
+
+            let norm = Math.sqrt(Av.reduce((s,x)=>s+x*x,0));
+
+            v = Av.map(x=>x/norm);
+
+        }
+
+
+        vectors.push(v);
+
+
+
+        let lambda=0;
+
+
+        for(let i=0;i<n;i++){
+
+            for(let j=0;j<n;j++){
+
+                lambda+=
+                    v[i]*
+                    M[i][j]*
+                    v[j];
+
+            }
+
+        }
+
+
+
+        for(let i=0;i<n;i++){
+
+            for(let j=0;j<n;j++){
+
+                M[i][j]-=
+                    lambda*
+                    v[i]*
+                    v[j];
+
+            }
+
+        }
+
+    }
+
+
+    return vectors;
+
+}
+
+
+
+// ============================================================
+// PCA Stabilisierung
+// ============================================================
+
+
+function alignAxis(reference, axis){
+
+
+    let dot=0;
+
+
+    for(let i=0;i<reference.length;i++){
+
+        dot+=
+            reference[i]*
+            axis[i];
+
+    }
+
+
+    if(dot<0){
+
+        return axis.map(
+            x=>-x
+        );
+
+    }
+
+
+    return axis;
+
+}
+
+
+
+
+
+function basisToProjection(basis){
+
+
+    let projection={
+
+        x:{},
+        y:{},
+        z:{}
+
+    };
+
+
+
+    ["x","y","z"].forEach(
+        (axis,index)=>{
+
+
+            featureNames.forEach(
+                (feature,i)=>{
+
+
+                    projection[axis][feature]=
+                        basis[index][i];
+
+                }
+            );
+
+        }
+    );
+
+
+    return projection;
+
+}
+
+
+// ============================================================
+// KOORDINATEN TRANSFORMATION
+// ============================================================
+
+
+
+class CoordinateSpace {
+
+
+    constructor(){
+
+        this.origin =
+            new THREE.Vector3();
+
+
+        this.rotation =
+            new THREE.Quaternion();
+
+
+        this.scale=1;
+
+    }
+
+
+}
+
+
+
+
+
+function project(cocktail, projection){
+
+
+    const f =
+        cocktail.features;
+
+
+
+    function calculate(axis){
+
+
+        let result=0;
+
+
+        for(const key in axis){
+
+            result +=
+                ((f[key]||0)
+                -
+                featureMeans[key])
+                *
+                axis[key];
+
+        }
+
+
+        return result;
+
+    }
+
+
+
+    return new THREE.Vector3(
+
+        calculate(projection.x)*8,
+        calculate(projection.y)*8,
+        calculate(projection.z)*8
+
+    );
+
+}
+
+
+
+
+
+function transformPoint(point, space){
+
+
+    let result =
+        point.clone();
+
+
+    result.sub(
+        space.origin
+    );
+
+
+    result.applyQuaternion(
+        space.rotation
+    );
+
+
+    result.multiplyScalar(
+        space.scale
+    );
+
+
+    return result;
+
+}
+
+
+// ============================================================
+// LOKALE TRANSFORMATION
+// ============================================================
+
+
+
+function calculateLocalRotation(selectedCocktail){
+
+
+    const selectedPosition = project(selectedCocktail, projectionA);
+    let points=[];
+
+
+    cocktails.forEach(c=>{
+
+
+        let p =
+            project(
+                c,
+                projectionA
+            )
+            .sub(
+                selectedPosition
+            );
+
+
+
+        let distance =
+            p.length();
+
+
+
+        let sigma=0.8;
+
+
+        let weight =
+            Math.exp(
+                -(distance*distance)
+                /
+                (2*sigma*sigma)
+            );
+
+
+
+        points.push({
+
+            vector:[
+                p.x,
+                p.y,
+                p.z
+            ],
+
+            weight
+
+        });
+
+
+    });
+
+
+    const basis = PCA3D(points);
+
+
+    return createRotationMatrix(
+        basis
+    );
+
+}
+
+
+
+
+
+function PCA3D(points){
+
+
+    let C=[
+
+        [0,0,0],
+        [0,0,0],
+        [0,0,0]
+
+    ];
+
+
+
+    points.forEach(p=>{
+
+
+        for(let i=0;i<3;i++){
+
+            for(let j=0;j<3;j++){
+
+                C[i][j]+=
+                    p.vector[i]*
+                    p.vector[j]*
+                    p.weight;
+
+            }
+
+        }
+
+
+    });
+
+
+
+    return getEigenvectors(C);
+
+}
+
+
+
+
+
+function createRotationMatrix(basis){
+
+
+
+    const globalBasis=[
+
+        [1,0,0],
+        [0,1,0],
+        [0,0,1]
+
+    ];
+
+
+
+    for(let i=0;i<3;i++){
+
+        basis[i]=
+            alignAxis(
+                globalBasis[i],
+                basis[i]
+            );
+
+    }
+
+
+
+    let m =
+        new THREE.Matrix4();
+
+
+
+    m.makeBasis(
+
+        new THREE.Vector3(
+            basis[0][0],
+            basis[0][1],
+            basis[0][2]
+        ),
+
+
+        new THREE.Vector3(
+            basis[1][0],
+            basis[1][1],
+            basis[1][2]
+        ),
+
+
+        new THREE.Vector3(
+            basis[2][0],
+            basis[2][1],
+            basis[2][2]
+        )
+
+    );
+
+
+
+    return m;
+
+}
+
+
+
+
+
+// ============================================================
+// ZIELPOSITIONEN
+// ============================================================
+
+
+
+function calculateTargetPositions(
+    selectedCocktail
+){
+
+
+    const selectedPos =
+        project(selectedCocktail, projectionA);
+
+
+    const rotation =
+        new THREE.Quaternion()
+            .setFromRotationMatrix(
+                calculateLocalRotation(
+                    selectedCocktail
+                )
+            );
+
+
+
+    let targets={};
+
+
+
+    cocktails.forEach(c=>{
+
+
+        let p =
+            project(c, projectionA).sub(selectedPos);
+
+        p.applyQuaternion(rotation);
+
+
+        let v1 =
+            cocktailToVector(
+                selectedCocktail
+            );
+
+
+        let v2 =
+            cocktailToVector(c);
+
+
+
+        let distance = 0;
+
+
+        for(let i=0; i<v1.length; i++){
+
+            distance +=
+                (v1[i]-v2[i])**2;
+
+        }
+
+
+        distance =
+            Math.sqrt(distance);
+
+
+
+        let scale =
+            1 +
+            0.8 * distance;
+
+
+
+        p.multiplyScalar(scale);
+
+
+
+        targets[c.name]=p;
+
+
+    });
+
+
+
+    return targets;
+
+}
+
+
+
+
+
+// ============================================================
+// THREE.JS SZENE
+// ============================================================
+
+
 
 const scene =
-new THREE.Scene();
+    new THREE.Scene();
+
+
+
+scene.background =
+    new THREE.Color(
+        0x050505
+    );
 
 
 
 const camera =
-new THREE.PerspectiveCamera(
-60,
-window.innerWidth/window.innerHeight,
-0.1,
-1000
-);
+    new THREE.PerspectiveCamera(
+        60,
+        window.innerWidth /
+        window.innerHeight,
+        0.1,
+        1000
+    );
+
 
 
 camera.position.z=20;
@@ -237,462 +756,405 @@ camera.position.z=20;
 
 
 const renderer =
-new THREE.WebGLRenderer({
-antialias:true
-});
+    new THREE.WebGLRenderer({
+        antialias:true
+    });
+
 
 
 renderer.setSize(
-window.innerWidth,
-window.innerHeight
+    window.innerWidth,
+    window.innerHeight
 );
+
 
 
 document.body.appendChild(
-renderer.domElement
+    renderer.domElement
 );
 
 
+// ============================================================
+// LABELS
+// ============================================================
 
-// ===============================
-// Labels
-// ===============================
+
 
 const labelRenderer =
-new THREE.CSS2DRenderer();
+    new THREE.CSS2DRenderer();
+
 
 
 labelRenderer.setSize(
-window.innerWidth,
-window.innerHeight
+    window.innerWidth,
+    window.innerHeight
 );
 
 
-labelRenderer.domElement.style.position="absolute";
-labelRenderer.domElement.style.top="0";
-labelRenderer.domElement.style.left="0";
-labelRenderer.domElement.style.pointerEvents="none";
+
+labelRenderer.domElement.style.position =
+    "absolute";
+
+
+labelRenderer.domElement.style.top =
+    "0";
+
+
+labelRenderer.domElement.style.pointerEvents =
+    "none";
+
 
 
 document.body.appendChild(
-labelRenderer.domElement
+    labelRenderer.domElement
 );
 
 
 
-// ===============================
-// Controls
-// ===============================
+
+// ============================================================
+// CONTROLS
+// ============================================================
+
 
 const controls =
-new THREE.OrbitControls(
-camera,
-renderer.domElement
-);
+    new THREE.OrbitControls(
+        camera,
+        renderer.domElement
+    );
 
 
 controls.enableDamping=true;
 
 
-console.log(
-"Controls:",
-controls
+
+scene.add(
+    new THREE.AxesHelper(10)
 );
 
 
 
-// ===============================
-// Transformation Variablen
-// ===============================
 
-let transforming = false;
-
-let transformProgress = 0;
-
-let startPositions = [];
-
-let targetPositions = [];
-
-let transformStartTime = 0;
-
-const transformDuration = 3000; // Millisekunden
+// ============================================================
+// COCKTAIL OBJEKTE
+// ============================================================
 
 
 
-// ===============================
-// Raycaster
-// ===============================
+const cocktailObjects=[];
+
+
+function createCocktailObjects(){
+
+    cocktails.forEach(cocktail=>{
+
+
+        const geometry =
+            new THREE.SphereGeometry(
+                0.3,
+                20,
+                20
+            );
+
+
+
+        const color =
+            cocktail.spirit==="Gin"
+            ?
+            0x55aaff
+
+            :
+
+            cocktail.spirit==="Whiskey"
+            ?
+            0xffaa44
+
+            :
+
+            0xffff88;
+
+
+
+        const material =
+            new THREE.MeshBasicMaterial({
+                color
+            });
+
+
+
+        const sphere =
+            new THREE.Mesh(
+                geometry,
+                material
+            );
+
+
+
+        sphere.position.copy(
+            project(
+                cocktail,
+                projectionA
+            )
+        );
+
+
+
+        sphere.userData.cocktail =
+            cocktail;
+
+
+        sphere.userData.isCocktail=true;
+
+
+
+        scene.add(
+            sphere
+        );
+
+
+
+        cocktailObjects.push(
+            sphere
+        );
+
+
+
+        const div =
+            document.createElement(
+                "div"
+            );
+
+
+        div.textContent =
+            cocktail.name;
+
+
+
+        div.style.color =
+            "white";
+
+
+
+        const label =
+            new THREE.CSS2DObject(
+                div
+            );
+
+
+
+        label.position.y=0.4;
+
+
+
+        sphere.add(
+            label
+        );
+
+
+    });
+}
+
+
+
+
+// ============================================================
+// CLICK SYSTEM
+// ============================================================
+
+
 
 const raycaster =
-new THREE.Raycaster();
+    new THREE.Raycaster();
 
 
 const mouse =
-new THREE.Vector2();
+    new THREE.Vector2();
 
 
 
-// ===============================
-// Koordinatenachsen
-// ===============================
-
-const axisLength=8;
 
 
-function createAxis(start,end,color){
+window.addEventListener(
+    "click",
+    event=>{
 
-const line =
-new THREE.Line(
 
-new THREE.BufferGeometry()
-.setFromPoints([
-start,
-end
-]),
+        mouse.x =
+            (event.clientX /
+            window.innerWidth)
+            *2-1;
 
-new THREE.LineBasicMaterial({
-color:color
-})
 
-);
-
-scene.add(line);
-
-}
+        mouse.y =
+            -(event.clientY /
+            window.innerHeight)
+            *2+1;
 
 
 
-createAxis(
-new THREE.Vector3(-axisLength,0,0),
-new THREE.Vector3(axisLength,0,0),
-0xff0000
-);
-
-
-createAxis(
-new THREE.Vector3(0,-axisLength,0),
-new THREE.Vector3(0,axisLength,0),
-0x00ff00
-);
-
-
-createAxis(
-new THREE.Vector3(0,0,-axisLength),
-new THREE.Vector3(0,0,axisLength),
-0x0000ff
-);
+        raycaster.setFromCamera(
+            mouse,
+            camera
+        );
 
 
 
-const origin =
-new THREE.Mesh(
+        const hits =
+            raycaster.intersectObjects(
+                cocktailObjects
+            );
 
-new THREE.SphereGeometry(
-0.12,
-16,
-16
-),
 
-new THREE.MeshBasicMaterial({
-color:0xffffff
-})
 
+        if(hits.length){
+
+
+            const cocktail =
+                hits[0]
+                .object
+                .userData
+                .cocktail;
+
+
+
+            startCocktailTransition(
+                cocktail
+            );
+
+
+        }
+
+
+    }
 );
 
 
-scene.add(origin);
+// ============================================================
+// ANIMATION SYSTEM
+// ============================================================
+//
+// Jede Animation besitzt:
+// - Startzustand
+// - Endzustand
+// - Dauer
+// - eigene Interpolation
 
-// ===============================
-// Labels
-// ===============================
 
 
-function createLabel(text,position){
 
 
-const div =
-document.createElement("div");
+class Animation {
 
 
-div.className="label";
+    constructor({
 
-div.textContent=text;
+        object,
+        start,
+        end,
+        duration = 1000,
+        easing = Animation.smooth
 
+    }){
 
 
-const label =
-new THREE.CSS2DObject(div);
+        this.object = object;
 
 
-label.position.copy(position);
+        this.start =
+            start.clone();
 
 
-scene.add(label);
+        this.end =
+            end.clone();
 
 
-}
+        this.duration =
+            duration;
 
 
+        this.elapsed=0;
 
-createLabel(
-"X",
-new THREE.Vector3(axisLength+0.5,0,0)
-);
 
+        this.easing =
+            easing;
 
-createLabel(
-"Y",
-new THREE.Vector3(0,axisLength+0.5,0)
-);
 
+        this.finished=false;
 
-createLabel(
-"Z",
-new THREE.Vector3(0,0,axisLength+0.5)
-);
+    }
 
 
 
 
-// ===============================
-// Farben nach Spirituose
-// ===============================
+    update(delta){
 
 
-const colors={
+        if(this.finished)
+            return;
 
-Gin:0x55ff55,
 
-Rum:0xffff55,
 
-Whiskey:0xff5555,
+        this.elapsed +=
+            delta * 1000;
 
-Vodka:0x5555ff,
 
-Aperol:0xff8800
 
-};
+        let t =
+            Math.min(
+                this.elapsed /
+                this.duration,
+                1
+            );
 
 
 
+        t =
+            this.easing(t);
 
-// ===============================
-// Cocktails erzeugen
-// ===============================
 
 
-cocktails.forEach(c=>{
+        this.object.position.lerpVectors(
 
+            this.start,
 
-const pos =
-projectA(c);
+            this.end,
 
+            t
 
+        );
 
-const geometry =
-new THREE.SphereGeometry(
-0.25,
-20,
-20
-);
 
 
+        if(this.elapsed>=this.duration){
 
-const material =
-new THREE.MeshBasicMaterial({
+            this.object.position.copy(
+                this.end
+            );
 
-color:
-colors[c.spirit] || 0xffffff,
 
-transparent:true,
+            this.finished=true;
 
-opacity:1
+        }
 
-});
 
+    }
 
 
-const sphere =
-new THREE.Mesh(
-geometry,
-material
-);
 
+    static linear(t){
 
+        return t;
 
-sphere.position.set(
-pos.x,
-pos.y,
-pos.z
-);
+    }
 
 
 
-sphere.userData.isCocktail=true;
+    static smooth(t){
 
-sphere.userData.cocktail=c;
+        return t*t*(3-2*t);
 
+    }
 
-
-scene.add(sphere);
-
-
-
-// Label
-
-const div =
-document.createElement("div");
-
-
-div.className="label";
-
-
-div.textContent=c.name;
-
-
-
-const label =
-new THREE.CSS2DObject(div);
-
-
-label.position.y=0.35;
-
-
-sphere.add(label);
-
-
-
-});
-
-
-
-
-// ===============================
-// Klickerkennung
-// ===============================
-
-
-renderer.domElement.addEventListener(
-"click",
-(event)=>{
-
-
-mouse.x =
-(event.clientX /
-window.innerWidth)*2-1;
-
-
-mouse.y =
--(event.clientY /
-window.innerHeight)*2+1;
-
-
-
-raycaster.setFromCamera(
-mouse,
-camera
-);
-
-
-
-const intersects =
-raycaster.intersectObjects(
-scene.children
-);
-
-
-
-for(let hit of intersects){
-
-
-if(hit.object.userData.isCocktail){
-
-
-transformToCocktail(
-hit.object
-);
-
-
-break;
-
-}
-
-
-}
-
-
-});
-
-
-
-
-
-// ===============================
-// Transformation
-// ausgewählter Cocktail -> Ursprung
-// ===============================
-
-
-function transformToCocktail(selected){
-
-
-console.log(
-"Ausgewählt:",
-selected.userData.cocktail.name
-);
-
-
-
-startPositions=[];
-
-targetPositions=[];
-
-
-
-const center =
-selected.position.clone();
-
-
-
-scene.children.forEach(obj=>{
-
-
-if(obj.userData.isCocktail){
-
-
-startPositions.push({
-
-object:obj,
-
-position:
-obj.position.clone()
-
-});
-
-
-
-targetPositions.push({
-
-object:obj,
-
-position:
-obj.position.clone()
-.sub(center)
-
-});
-
-
-}
-
-
-});
-
-
-transformProgress = 0;
-
-transformStartTime = performance.now();
-
-transforming = true;
 
 
 }
@@ -701,188 +1163,213 @@ transforming = true;
 
 
 
-// ===============================
-// Animation
-// ===============================
+// ============================================================
+// GLOBALER ANIMATION MANAGER
+// ============================================================
+
+
+
+class Animator {
+
+
+    constructor(){
+
+        this.animations=[];
+
+    }
+
+
+
+
+    add(animation){
+
+        this.animations.push(
+            animation
+        );
+
+    }
+
+
+
+
+
+    update(delta){
+
+
+        this.animations.forEach(
+            animation=>{
+
+                animation.update(
+                    delta
+                );
+
+            }
+        );
+
+
+
+        this.animations =
+            this.animations.filter(
+                a=>!a.finished
+            );
+
+    }
+
+
+}
+
+
+
+
+const animator =
+    new Animator();
+
+
+
+
+
+// ============================================================
+// TRANSITION START
+// ============================================================
+//
+// Erzeugt nur Animationen.
+// Keine Animation steckt hier.
+//
+
+
+
+
+function startCocktailTransition(
+    selectedCocktail
+){
+
+
+
+    const targets =
+        calculateTargetPositions(
+            selectedCocktail
+        );
+
+
+
+
+    cocktailObjects.forEach(
+        object=>{
+
+
+            const name =
+                object
+                .userData
+                .cocktail
+                .name;
+
+
+
+            animator.add(
+
+                new Animation({
+
+                    object,
+
+
+                    start:
+                        object.position.clone(),
+
+
+                    end:
+                        targets[name].clone(),
+
+
+                    duration:
+                        1800,
+
+
+                    easing:
+                        Animation.smooth
+
+                })
+
+            );
+
+
+        }
+    );
+
+
+
+}
+
+
+
+
+
+// ============================================================
+// CLOCK
+// ============================================================
+
+
+const clock =
+    new THREE.Clock();
+
+
+
+
+// ============================================================
+// RENDER LOOP
+// ============================================================
+
 
 
 function animate(){
 
 
-requestAnimationFrame(
-animate
-);
+    requestAnimationFrame(
+        animate
+    );
 
 
 
-controls.update();
+    const delta =
+        clock.getDelta();
 
 
 
-
-// -------------------------------
-// Raum Transformation
-// -------------------------------
-
-
-if(transforming){
-
-
-const elapsed =
-performance.now()
--
-transformStartTime;
+    controls.update();
 
 
 
-transformProgress =
-Math.min(
-elapsed / transformDuration,
-1
-);
+    animator.update(
+        delta
+    );
 
 
 
-// kubische Ease-In-Out Funktion
-
-const eased =
-transformProgress < 0.5
-
-?
-
-16 *
-Math.pow(transformProgress,5)
-
-:
-
-1 -
-Math.pow(
--2 * transformProgress + 2,
-5
-) / 2;
+    renderer.render(
+        scene,
+        camera
+    );
 
 
 
-for(
-let i=0;
-i<startPositions.length;
-i++
-){
-
-
-startPositions[i]
-.object
-.position
-.lerpVectors(
-
-startPositions[i].position,
-
-targetPositions[i].position,
-
-eased
-
-);
+    labelRenderer.render(
+        scene,
+        camera
+    );
 
 
 }
 
 
 
-if(transformProgress >= 1){
-
-transforming=false;
-
-}
-
-
-}
-
-
-// -------------------------------
-// Kameraabhängige Größe
-// -------------------------------
-
-
-scene.children.forEach(obj=>{
-
-
-if(obj.userData.isCocktail){
-
-
-
-const distance =
-camera.position.distanceTo(
-obj.position
-);
-
-
-
-const scale =
-THREE.MathUtils.clamp(
-
-1-distance/35,
-
-0.25,
-
-1
-
-);
-
-
-
-obj.scale.setScalar(
-scale
-);
-
-
-
-obj.material.opacity =
-THREE.MathUtils.clamp(
-
-1-distance/35,
-
-0.15,
-
-1
-
-);
-
-
-
-}
-
-
-});
+loadData();
 
 
 
 
-renderer.render(
-scene,
-camera
-);
+// ============================================================
+// RESIZE
+// ============================================================
 
-
-
-labelRenderer.render(
-scene,
-camera
-);
-
-
-
-}
-
-
-animate();
-
-
-
-
-
-// ===============================
-// Resize
-// ===============================
 
 
 window.addEventListener(
@@ -890,27 +1377,27 @@ window.addEventListener(
 ()=>{
 
 
-camera.aspect =
-window.innerWidth /
-window.innerHeight;
-
-
-camera.updateProjectionMatrix();
+    camera.aspect =
+        window.innerWidth /
+        window.innerHeight;
 
 
 
-renderer.setSize(
-window.innerWidth,
-window.innerHeight
-);
+    camera.updateProjectionMatrix();
 
 
 
-labelRenderer.setSize(
-window.innerWidth,
-window.innerHeight
-);
+    renderer.setSize(
+        window.innerWidth,
+        window.innerHeight
+    );
 
+
+
+    labelRenderer.setSize(
+        window.innerWidth,
+        window.innerHeight
+    );
 
 
 });
